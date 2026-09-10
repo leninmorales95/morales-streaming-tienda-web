@@ -727,6 +727,63 @@ html:not(.light-mode) #cardsContainer .product-card-v3 .product-visual-v3 {
   border-bottom-color: rgba(96,215,235,.48) !important;
 }
 
+/* Barra inferior móvil: contraste sólido y legible en modo claro. */
+@media (max-width:650px) {
+  html.light-mode .mobile-bottom-nav {
+    background: #f8fbfd !important;
+    border-top-color: #b7ccd6 !important;
+    box-shadow: 0 -8px 24px rgba(31,62,78,.18) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  html.light-mode .mobile-nav-item { color: #536a7b !important; }
+  html.light-mode .mobile-nav-item.active,
+  html.light-mode .mobile-nav-item:active { color: #087f9f !important; }
+  html.light-mode .mobile-nav-item.active::before {
+    background: #087f9f !important;
+    box-shadow: none !important;
+  }
+}
+
+/* En celulares apaisados el ancho supera 650px, pero debe conservarse la navegación móvil. */
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 1000px) {
+  .mobile-bottom-nav { display: grid !important; }
+  .mobile-search-btn, .mobile-more-btn { display: grid !important; }
+  .top-actions, .desktop-info-link, .top-links { display: none !important; }
+  .top-bar { justify-content: flex-start !important; }
+  .brand-left-box { margin-right: auto !important; }
+  .mobile-search-btn { margin-left: auto !important; }
+  .top-bar-container { min-height: 62px !important; }
+  .catalog-bg-layer { top: 62px !important; }
+}
+
+/* El modo oscuro usa grafito, también en la barra inferior móvil. */
+html:not(.light-mode) .mobile-bottom-nav {
+  background: #11161b !important;
+  border-top-color: #39444d !important;
+  box-shadow: 0 -8px 24px rgba(0,0,0,.45) !important;
+}
+html:not(.light-mode) .mobile-nav-item { color: #a5b1bb !important; }
+html:not(.light-mode) .mobile-nav-item.active,
+html:not(.light-mode) .mobile-nav-item:active { color: #58d9ef !important; }
+html:not(.light-mode) .mobile-nav-item.active::before {
+  background: #58d9ef !important;
+  box-shadow: none !important;
+}
+html:not(.light-mode) .more-menu {
+  background: #171d22 !important;
+  border-color: #3b474f !important;
+  box-shadow: 0 22px 60px rgba(0,0,0,.58) !important;
+}
+html:not(.light-mode) .more-menu button:hover,
+html:not(.light-mode) .more-menu a:hover,
+html:not(.light-mode) .more-menu button:focus-visible,
+html:not(.light-mode) .more-menu a:focus-visible {
+  background: #222c33 !important;
+}
+html:not(.light-mode) .more-menu i { color: #58d9ef !important; }
+html:not(.light-mode) .more-menu small { color: #9eabb4 !important; }
+
 /* Durante una búsqueda, el carrusel no debe competir con los resultados. */
 body.search-active .catalog-bg-layer { display: none !important; }
 .combo-premium-card.search-hidden,
