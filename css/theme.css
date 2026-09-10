@@ -576,7 +576,7 @@ html.light-mode .combo-premium-card h3 { color: #172d43 !important; }
 html.light-mode .combo-premium-card h3 + p { color: #5b6f80 !important; }
 html.light-mode .combo-premium-card h3 + p .combo-platforms { color: #2d6078 !important; }
 @media (max-width: 650px) {
-  #cardsContainer .product-card-v3 .product-visual-v3 { height: 126px !important; }
+  #cardsContainer .product-card-v3 .product-visual-v3 { height: 120px !important; }
 }
 html.light-mode .combo-premium-card p { color: #5b6f80 !important; }
 html.light-mode .combo-premium-card .combo-price-mini { color: #07876f !important; text-shadow: none !important; }
