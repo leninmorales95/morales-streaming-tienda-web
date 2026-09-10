@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO & OPEN GRAPH -->
+  <title>Morales Streaming | Cuentas Premium</title>
+  <meta name="description" content="Cuentas premium de streaming, IPTV, música y productividad. Activación inmediata y soporte garantizado en Perú." />
+  <meta property="og:title" content="Morales Streaming | Cuentas Premium" />
+  <meta property="og:description" content="Disfruta tus plataformas favoritas como Netflix, Disney+, DGO e IPTV con entrega inmediata y garantía." />
+  <meta property="og:image" content="assets/brand/morales-streaming.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tienda-morales-streaming.vercel.app/" />
+  <meta property="og:site_name" content="Morales Streaming" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Morales Streaming | Cuentas Premium" />
+  <meta name="twitter:description" content="Streaming, TV, música y productividad con atención directa por WhatsApp." />
+  <meta name="twitter:image" content="assets/brand/morales-streaming.png" />
+  <link rel="canonical" href="https://tienda-morales-streaming.vercel.app/" />
+  <link rel="icon" type="image/png" href="assets/brand/morales-streaming.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    try {
+      const pageUrl = new URL(window.location.href);
+      if (pageUrl.searchParams.get("sync") === "1") {
+        document.documentElement.classList.add("skip-welcome");
+        pageUrl.searchParams.delete("sync");
+        window.history.replaceState(null, "", pageUrl.toString());
+      }
+    } catch (error) {}
+    try {
+      if (localStorage.getItem('morales-theme') === 'light') {
+        document.documentElement.classList.add('light-mode');
+      }
+    } catch (error) {}
+  </script>
+
+  <!-- Enlace a tu archivo CSS externo -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body>
+
+  <!-- LOADER PROMOCIONAL -->
+  <div class="loader" id="loader">
+    <div class="loader-orb loader-orb-one"></div>
+    <div class="loader-orb loader-orb-two"></div>
+
+    <div class="promo-loader-box">
+      <div class="loader-logo"><span class="loader-brand-morales">MORALES</span> <span class="loader-brand-streaming">STREAMING</span></div>
+
+      <span class="promo-loader-tag">🔥 OFERTAS TODOS LOS DÍAS</span>
+
+      <h2>Todo listo para disfrutar</h2>
+
+      <p>Activación inmediata · Soporte por WhatsApp</p>
+
+      <div class="loader-spinner-bar"></div>
+    </div>
+  </div>
+
+<!-- NAVBAR FIJA -->
+<div class="top-bar-container">
+  <nav class="top-bar">
+
+    <div class="brand-left-box">
+      <a href="?sync=1" class="logo-link" title="Sincronizar catálogo">
+        <img
+          src="assets/brand/morales-streaming.png"
+          alt="Morales Logo Mini"
+          class="brand-logo-mini"
+          loading="lazy"
+        />
+      </a>
+
+      <!-- TEXTO SOLO PARA CELULAR -->
+      <div class="mobile-brand-name">
+        MORALES <strong>STREAMING</strong>
+      </div>
+
+<!-- TEXTO DE PC -->
+<div class="brand-mini" aria-label="Morales Streaming">
+  <span class="brand-morales">MORALES</span>
+  <span class="brand-streaming">STREAMING</span>
+</div>
+
+    </div>
+
+    <!-- BUSCADOR -->
+    <label class="search-box" id="searchBox">
+      <i class="fa-solid fa-magnifying-glass"></i>
+
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Buscar Netflix, Disney, IPTV, Max..."
+      />
+
+      <button
+        id="clearSearchBtn"
+        type="button"
+        style="display:none; background:none; border:none; color:var(--text-gray); cursor:pointer; padding:0 4px; font-size:0.85rem;"
+        title="Limpiar búsqueda"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </label>
+
+
+    <!-- LUPA SOLO CELULAR -->
+    <button
+      type="button"
+      id="mobileSearchBtn"
+      class="mobile-search-btn"
+      aria-label="Buscar"
+    >
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+
+    <!-- MENÚ DE INFORMACIÓN / MÁS -->
+    <button type="button" id="mobileMoreBtn" class="mobile-more-btn" aria-label="Más opciones" aria-expanded="false">
+      <i class="fa-solid fa-ellipsis-vertical"></i>
+    </button>
+
+    <!-- NAVEGACIÓN PC -->
+    <div class="top-actions">
+
+      <a href="#planes" class="top-link">
+        Planes
+      </a>
+
+      <a href="#pagos" class="top-link">
+        Pagos
+      </a>
+
+      <a href="#combos" class="top-link">
+        Combos
+      </a>
+
+      <a
+        href="#"
+        onclick="openCustomComboModal(); return false;"
+        class="top-link combo-nav-btn"
+      >
+        ✨ Armar Combo
+      </a>
+
+      <button type="button" class="top-link desktop-info-link" data-info-panel="referrals">
+        <i class="fa-solid fa-gift"></i> Referidos
+      </button>
+
+      <button type="button" class="top-link desktop-info-link" data-info-panel="howto">
+        <i class="fa-solid fa-bag-shopping"></i> Cómo comprar
+      </button>
+
+      <button
+        id="cart-btn"
+        class="top-link"
+        style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); cursor:pointer; display:inline-flex; align-items:center; gap:6px;"
+      >
+        <i class="fa-solid fa-cart-shopping"></i>
+
+        Carrito
+
+        <span
+          id="cart-count"
+          style="background:var(--accent,#00d4ff); color:#000; font-size:0.7rem; padding:1px 6px; border-radius:99px; font-weight:800;"
+        >
+          0
+        </span>
+      </button>
+
+      <button id="theme-toggle" class="top-link theme-toggle" type="button" aria-label="Activar modo claro" title="Activar modo claro">
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        <span class="theme-toggle-label">Claro</span>
+      </button>
+
+    </div>
+
+  </nav>
+</div>
+
+  <div class="more-menu" id="moreMenu" aria-hidden="true">
+    <button type="button" data-info-panel="referrals"><i class="fa-solid fa-gift"></i><span><strong>Programa de referidos</strong><small>Invita y gana descuentos</small></span></button>
+    <button type="button" data-info-panel="howto"><i class="fa-solid fa-bag-shopping"></i><span><strong>Cómo comprar</strong><small>Proceso, disponibilidad y renovación</small></span></button>
+    <button type="button" data-theme-toggle><i class="fa-solid fa-sun"></i><span><strong>Modo claro</strong><small>Cambia la apariencia de la tienda</small></span></button>
+  </div>
+
+  <!-- NAVEGACIÓN INFERIOR SOLO PARA CELULAR -->
+  <nav class="mobile-bottom-nav" aria-label="Navegación móvil">
+    <a href="#planes" class="mobile-nav-item active" data-mobile-section="productos">
+      <i class="fa-solid fa-table-cells-large"></i>
+      <span>Productos</span>
+    </a>
+    <a href="#combos" class="mobile-nav-item" data-mobile-section="combos">
+      <i class="fa-solid fa-layer-group"></i>
+      <span>Combos</span>
+    </a>
+    <a href="#pagos" class="mobile-nav-item" data-mobile-section="pagos">
+      <i class="fa-solid fa-wallet"></i>
+      <span>Pagos</span>
+    </a>
+    <button type="button" class="mobile-nav-item mobile-cart-btn" id="mobile-cart-btn">
+      <span class="mobile-cart-icon-wrap">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="mobile-cart-count" class="mobile-cart-count">0</span>
+      </span>
+      <span>Carrito</span>
+    </button>
+  </nav>
+
+  <!-- HERO MODERNO -->
+  <header>
+    <div class="hero-modern">
+
+      <!-- 🚀 FONDO ANIMADO CON PÓSTERS VERTICALES -->
+      <div class="hero-streaming-bg">
+        <div class="hero-scroll-col up">
+          <img src="assets/posters/slide-01.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-02.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-03.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-04.jpg" alt="Poster" loading="lazy">
+        </div>
+        <div class="hero-scroll-col down">
+          <img src="assets/posters/slide-05.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-06.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-07.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-01.jpg" alt="Poster" loading="lazy">
+        </div>
+        <div class="hero-scroll-col up">
+          <img src="assets/posters/robot-salvaje.webp" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-09.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-10.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-04.jpg" alt="Poster" loading="lazy">
+        </div>
+        <div class="hero-scroll-col down">
+          <img src="assets/posters/slide-11.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-12.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-13.jpg" alt="Poster" loading="lazy">
+          <img src="assets/posters/slide-14.jpg" alt="Poster" loading="lazy">
+        </div>
+      </div>
+
+      <!-- TUS TEXTOS DEL HERO -->
+      <span class="promo-loader-tag">🔥 ¡Atención rápida por WhatsApp con entrega inmediata! 🚀</span>
+      <h1>Cuentas <span class="gradient-text">100% Garantizadas</span></h1>
+      <p class="hero-sub">Disfruta del mejor cine, series y deportes en alta resolución con entrega inmediata.</p>
+    </div>
+  </header>
+
+  <!-- FILTROS DE CATEGORÍA -->
+  <section class="dashboard-filter-section catalog-tools-v3" id="planes">
+    <div class="catalog-heading">
+      <h2>Explora nuestras plataformas</h2>
+      <p>Elige una categoría y encuentra tu servicio favorito.</p>
+    </div>
+    <div class="category-filter category-filter-v3" aria-label="Categorías del catálogo">
+      <button class="category-chip active" data-category-filter="top"><i class="fa-solid fa-fire"></i> Top vendidos</button>
+      <button class="category-chip" data-category-filter="all"><i class="fa-solid fa-border-all"></i> Todo</button>
+      <button class="category-chip" data-category-filter="streaming"><i class="fa-solid fa-film"></i> Streaming</button>
+      <button class="category-chip" data-category-filter="tv"><i class="fa-solid fa-tv"></i> IPTV / TV</button>
+      <button class="category-chip" data-category-filter="sports"><i class="fa-solid fa-futbol"></i> Deportes</button>
+      <button class="category-chip" data-category-filter="music"><i class="fa-solid fa-music"></i> Música</button>
+      <button class="category-chip" data-category-filter="anime"><i class="fa-solid fa-tag"></i> Anime</button>
+      <button class="category-chip" data-category-filter="movies"><i class="fa-solid fa-tag"></i> Películas</button>
+      <button class="category-chip" data-category-filter="productivity"><i class="fa-solid fa-tag"></i> Productividad</button>
+      <button class="category-chip" data-category-filter="design"><i class="fa-solid fa-tag"></i> Diseño</button>
+      <button class="category-chip" data-category-filter="software"><i class="fa-solid fa-tag"></i> Software</button>
+      <button type="button" class="category-more-toggle" aria-expanded="false">Más categorías <i class="fa-solid fa-chevron-down"></i></button>
+    </div>
+
+    <div class="catalog-control-bar-v3">
+      <label class="catalog-sort-v3">Ordenar
+        <select id="catalogSort">
+          <option value="featured">Destacados</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="name">Nombre</option>
+        </select>
+      </label>
+      <label class="catalog-check-v3"><input id="availableOnly" type="checkbox"> Solo disponibles</label>
+      <label class="catalog-check-v3"><input id="offersOnly" type="checkbox"> Solo ofertas</label>
+    </div>
+  </section>
+
+  <!-- CONTENEDOR DE TARJETAS -->
+  <div class="search-suggestion" id="searchSuggestion" hidden></div>
+  <main class="container" id="cardsContainer">
+
+    <!-- 1. NETFLIX -->
+    <article class="card" data-name="netflix ultra premium streaming 4k peliculas" data-platform="netflix" data-category="streaming">
+      <div class="card-inner">
+        <span class="card-tag">🟢 Disponible</span>
+        <span class="card-mini-badge">🔥 Más vendido</span>
+        <div class="logo-wrap">
+          <div class="brand-logo-card">
+            <img src="assets/products/netflix.png" alt="Netflix" loading="lazy">
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="text-group">
+            <div class="plan-title">Netflix</div>
+            <div class="plan-duration">4K UHD • Cuenta</div>
+          </div>
+          <div class="price-container-card">
+            <span class="old-price-card">S/18.00</span>
+            <div class="price-tag"><span class="current-price-val">S/16</span></div>
+          </div>
+        </div>
+        <div class="card-buttons-wrapper">
+          <button class="btn-buy"><i class="fa-solid fa-eye"></i> Ver Detalles</button>
+          <button type="button" class="add-to-cart-btn" title="Añadir al carrito">
+            <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. DISNEY -->
+    <article class="card" data-name="disney premium star deporte espn series" data-platform="disney" data-category="streaming">
+      <div class="card-inner">
+        <span class="card-tag">⚡ Instantáneo</span>
+        <div class="logo-wrap">
+          <div class="brand-logo-card">
+            <img src="assets/products/disney.png" alt="Disney+" loading="lazy">
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="text-group"><div class="plan-title">Disney+ Premium</div><div class="plan-duration">ESPN • Perfil</div></div>
+          <div class="price-container-card">
+            <span class="old-price-card">S/14.00</span>
+            <div class="price-tag"><span class="current-price-val">S/12</span></div>
+          </div>
+        </div>
+        <div class="card-buttons-wrapper">
+          <button class="btn-buy"><i class="fa-solid fa-eye"></i> Ver Detalles</button>
+          <button type="button" class="add-to-cart-btn" title="Añadir al carrito">
+            <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. MOVISTAR TV -->
+    <article class="card" data-name="movistar tv canales deporte tv en vivo cable" data-platform="movistar" data-category="tv">
+      <div class="card-inner">
+        <span class="card-tag">📺 Cable</span>
+        <span class="card-mini-badge">🟡 Últimos 3</span>
+        <div class="logo-wrap">
+          <div class="brand-logo-card">
+            <img src="assets/products/movistar-tv.jpg" alt="Movistar TV" loading="lazy">
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="text-group"><div class="plan-title">Movistar TV</div><div class="plan-duration">+130 Canales • En Vivo</div></div>
+          <div class="price-container-card">
+            <span class="old-price-card">S/25.00</span>
+            <div class="price-tag"><span class="current-price-val">S/20</span></div>
+          </div>
+        </div>
+        <div class="card-buttons-wrapper">
+          <button class="btn-buy"><i class="fa-solid fa-eye"></i> Ver Detalles</button>
+          <button type="button" class="add-to-cart-btn" title="Añadir al carrito">
+            <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. DIRECTV GO -->
+    <article class="card" data-name="directv go deportes tv premium liga 1 max dgo dtv" data-platform="directvgo" data-category="tv">
+      <div class="card-inner">
+        <span class="card-tag">⚽ Deportes</span>
+        <span class="card-mini-badge">🟡 Últimos 2</span>
+        <div class="logo-wrap">
+          <div class="brand-logo-card">
+            <img src="assets/products/directv-go.png" alt="Directv GO" loading="lazy">
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="text-group"><div class="plan-title">Directv GO</div><div class="plan-duration">Liga 1 Max • Deportes</div></div>
+          <div class="price-container-card">
+            <span class="old-price-card">S/35.00</span>
+            <div class="price-tag"><span class="current-price-val">S/28</span></div>
+          </div>
+        </div>
+        <div class="card-buttons-wrapper">
+          <button class="btn-buy"><i class="fa-solid fa-eye"></i> Ver Detalles</button>
+          <button type="button" class="add-to-cart-btn" title="Añadir al carrito">
+            <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. YOUTUBE -->
+    <article class="card" data-name="youtube premium music sin anuncios videos pro" data-platform="youtube" data-category="music">
+      <div class="card-inner">
+        <span class="card-tag">🎵 Premium</span>
+        <div class="logo-wrap">
+          <div class="brand-logo-card">
+            <img src="assets/products/youtube.png" alt="YouTube" loading="lazy">
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="text-group"><div class="plan-title">YouTube Pro</div><div class="plan-duration">Sin Anuncios • Music</div></div>
+          <div class="price-container-card">
+            <span class="old-price-card">S/10.00</span>
+            <div class="price-tag"><span class="current-price-val">S/8</span></div>
+          </div>
+        </div>
+        <div class="card-buttons-wrapper">
+          <button class="btn-buy"><i class="fa-solid fa-eye"></i> Ver Detalles</button>
+          <button type="button" class="add-to-cart-btn" title="Añadir al carrito">
+            <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. MAX -->
+    <article class="card" data-name="max hbo estrenos cine 4k series warner dc hbomax" data-platform="max" data-category="streaming">
+      <div class="card-inner">
+        <span class="card-tag">🎬 Estrenos</span>
+        <div class="logo-wrap">
+          <div class="brand-logo-card">
+            <img src="assets/products/hbo-max.png" alt="Max" loading="lazy">
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="text-group"><div class="plan-title">HBO Max</div><div class="plan-duration">Cine • Series Exclusivas</div></div>
+          <div class="price-container-card">
+            <span class="old-price-card">S/10.00</span>
+            <div class="price-tag"><span class="current-price-val">S/8</span></div>
+          </div>
+        </div>
+        <div class="card-buttons-wrapper">
+          <button class="btn-buy"><i class="fa-solid fa-eye"></i> Ver Detalles</button>
+          <button type="button" class="add-to-cart-btn" title="Añadir al carrito">
+            <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 🚀 TARJETA ESPECIAL "VER MÁS" -->
+    <article class="card more-platforms-card" onclick="verTodasLasPlataformas()" data-category="top">
+      <div class="card-inner" style="justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, rgba(0,212,255,0.15), rgba(18,22,45,0.98));">
+        <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb, #2575fc, #00d4ff); display: grid; place-items: center; margin-bottom: 14px; box-shadow: 0 0 20px rgba(0,212,255,0.4);">
+          <i class="fa-solid fa-plus" style="font-size: 1.8rem; color: #ffffff;"></i>
+        </div>
+        <h3 class="plan-title" style="font-size: 1.1rem !important; margin-bottom: 4px;">Ver más plataformas</h3>
+        <p class="plan-duration" style="color: var(--text-gray) !important;">Explora todo el catálogo</p>
+      </div>
+    </article>
+
+  </main>
+
+  <div class="no-results-msg" id="noResultsMsg">
+    <i class="fa-solid fa-magnifying-glass-minus"></i>
+    <h3>¿No encuentras la plataforma que buscas?</h3>
+    <p>Escríbenos directamente por WhatsApp y te la conseguimos al instante.</p>
+    <a href="https://api.whatsapp.com/send?phone=51935111590&text=%F0%9F%90%B1%E2%80%8D%E2%AC%9B%20%21Hola%21%20Buscaba%20una%20plataforma%20en%20tu%20web%20y%20no%20la%20encontr%C3%A9.%20%C2%BFTienes%20disponibilidad%3F" target="_blank" class="btn-action-custom">
+      <i class="fab fa-whatsapp"></i> Consultar disponibilidad
+    </a>
+  </div>
+
+  <!-- COMBOS PREESTABLECIDOS -->
+  <section class="combo-premium-section combos-final-section" id="combos">
+    <div class="reviews-header">
+      <span class="reviews-mini">🔥 COMBOS DESTACADOS</span>
+      <h2>Combos preestablecidos para ti</h2>
+      <p>Paquetes combinados pensados para cine, deportes y contenido familiar.</p>
+    </div>
+    <div class="combo-premium-grid">
+      <article class="combo-premium-card">
+        <span class="combo-label">🎬 Familiar</span>
+        <h3>Combo Familiar</h3>
+        <p><strong class="combo-platforms">Netflix + Disney+ + Prime</strong><span class="combo-description">Video para disfrutar el mejor cine en casa.</span></p>
+        <div class="combo-price-mini">S/27</div>
+        <a class="combo-action" href="https://api.whatsapp.com/send?phone=51935111590&text=Hola%20quiero%20el%20Combo%20Familiar" target="_blank">
+          Solicitar combo <i class="fab fa-whatsapp"></i>
+        </a>
+      </article>
+
+      <article class="combo-premium-card">
+        <span class="combo-label">⚽ Deportes</span>
+        <h3>Combo Deportes</h3>
+        <p><strong class="combo-platforms">IPTV Premium + DIRECTV GO</strong><span class="combo-description">Para ver partidos, ligas y eventos en vivo.</span></p>
+        <div class="combo-price-mini">S/32</div>
+        <a class="combo-action" href="https://api.whatsapp.com/send?phone=51935111590&text=Hola%20quiero%20el%20Combo%20Deportes" target="_blank">
+          Solicitar combo <i class="fab fa-whatsapp"></i>
+        </a>
+      </article>
+
+      <article class="combo-premium-card">
+        <span class="combo-label">💎 Completo</span>
+        <h3>Combo Total</h3>
+        <p><strong class="combo-platforms">Netflix + Max + IPTV + Disney+</strong><span class="combo-description">Todo el catálogo en un solo paquete.</span></p>
+        <div class="combo-price-mini">S/35</div>
+        <a class="combo-action" href="https://api.whatsapp.com/send?phone=51935111590&text=Hola%20quiero%20el%20Combo%20Total" target="_blank">
+          Solicitar combo <i class="fab fa-whatsapp"></i>
+        </a>
+      </article>
+
+      <article class="combo-premium-card">
+        <span class="combo-label">💎 Animes</span>
+        <h3>Combo Animes</h3>
+        <p><strong class="combo-platforms">Crunchyroll + IPTV + Disney+</strong><span class="combo-description">Todas incluyen tu anime favorito.</span></p>
+        <div class="combo-price-mini">S/20</div>
+        <a class="combo-action" href="https://api.whatsapp.com/send?phone=51935111590&text=Hola%20quiero%20el%20Combo%20Animes" target="_blank">
+          Solicitar combo <i class="fab fa-whatsapp"></i>
+        </a>
+      </article>
+
+      <!-- 🚀 QUINTA TARJETA: ARMA TU PROPIO COMBO -->
+      <article class="combo-premium-card" onclick="openCustomComboModal()" style="cursor: pointer; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, rgba(0,212,255,0.15), rgba(18,22,45,0.98));">
+        <div style="width: 45px; height: 45px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb, #2575fc, #00d4ff); display: grid; place-items: center; margin-bottom: 8px; box-shadow: 0 0 15px rgba(0,212,255,0.4);">
+          <i class="fa-solid fa-plus" style="font-size: 1.3rem; color: #ffffff;"></i>
+        </div>
+        <h3 style="font-size: 1.05rem !important; margin-bottom: 4px;">Arma tu Combo</h3>
+        <p style="font-size: 0.75rem !important; color: var(--text-gray) !important; margin: 0 0 10px !important;">Elige las plataformas que quieras y ahorra más.</p>
+        <span class="combo-action" style="margin-top: 0 !important; background: linear-gradient(135deg, #6a11cb, #2575fc) !important; color: #fff !important;">
+          Personalizar <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </span>
+      </article>
+    </div>
+  </section>
+
+  <!-- OPINIONES -->
+  <section class="reviews-modern-section">
+    <div class="reviews-header">
+      <span class="reviews-mini">⭐ OPINIONES DE CLIENTES</span>
+      <h2>Experiencias de nuestros clientes</h2>
+      <p>Comentarios sobre activaciones, atención y estabilidad del servicio.</p>
+    </div>
+
+    <div class="reviews-modern-grid">
+
+      <article class="review-modern-card">
+        <div class="review-card-head">
+          <img
+            class="review-photo"
+            src="https://api.dicebear.com/9.x/avataaars/svg?seed=JuanP&backgroundColor=312e81"
+            alt="Avatar ilustrado de Juan P."
+            loading="lazy"
+          />
+
+          <div class="review-person">
+            <h4>Juan P.</h4>
+            <span>Netflix + IPTV</span>
+          </div>
+
+          <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+        </div>
+
+        <div class="review-service-badge">
+          <i class="fa-solid fa-circle-check"></i>
+          Servicio contratado
+        </div>
+
+        <p class="review-text">
+          “Me atendieron rápido por WhatsApp. Netflix quedó funcionando ese mismo día
+          y hasta ahora todo bien.”
+        </p>
+
+        <div class="review-footer">
+          <span><i class="fa-regular fa-clock"></i> Reseña reciente</span>
+          <span>Atención por WhatsApp</span>
+        </div>
+      </article>
+
+
+      <article class="review-modern-card">
+        <div class="review-card-head">
+          <img
+            class="review-photo"
+            src="https://api.dicebear.com/9.x/avataaars/svg?seed=MariaT&backgroundColor=0f766e"
+            alt="Avatar ilustrado de María T."
+            loading="lazy"
+          />
+
+          <div class="review-person">
+            <h4>María T.</h4>
+            <span>Disney+ Premium</span>
+          </div>
+
+          <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+        </div>
+
+        <div class="review-service-badge">
+          <i class="fa-solid fa-circle-check"></i>
+          Servicio contratado
+        </div>
+
+        <p class="review-text">
+          “Tuve una duda con el acceso y me respondieron bastante rápido.
+          Ya llevo varios días usándolo normal.”
+        </p>
+
+        <div class="review-footer">
+          <span><i class="fa-regular fa-clock"></i> Reseña reciente</span>
+          <span>Soporte rápido</span>
+        </div>
+      </article>
+
+
+      <article class="review-modern-card">
+        <div class="review-card-head">
+          <img
+            class="review-photo"
+            src="https://api.dicebear.com/9.x/avataaars/svg?seed=AlexR&backgroundColor=1d4ed8"
+            alt="Avatar ilustrado de Alex R."
+            loading="lazy"
+          />
+
+          <div class="review-person">
+            <h4>Alex R.</h4>
+            <span>DIRECTV GO</span>
+          </div>
+
+          <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+        </div>
+
+        <div class="review-service-badge">
+          <i class="fa-solid fa-circle-check"></i>
+          Servicio contratado
+        </div>
+
+        <p class="review-text">
+          “Lo uso principalmente para los partidos. La señal me ha ido estable
+          y cuando consulté me contestaron al toque.”
+        </p>
+
+        <div class="review-footer">
+          <span><i class="fa-regular fa-clock"></i> Reseña reciente</span>
+          <span>Deportes en vivo</span>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <section class="faq-section" id="preguntas">
+    <div class="faq-heading">
+      <span>RESOLVEMOS TUS DUDAS</span>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <div class="faq-container">
+      <article class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)"><span>¿Cómo recibo mi servicio?</span><i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Después de confirmar la disponibilidad y validar el pago, coordinamos la activación y entrega directamente por WhatsApp.</div>
+      </article>
+      <article class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)"><span>¿Los servicios incluyen soporte?</span><i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Sí. Durante la vigencia del servicio puedes escribirnos por WhatsApp para revisar cualquier inconveniente con el acceso.</div>
+      </article>
+      <article class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)"><span>¿La renovación es automática?</span><i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">No. La renovación es opcional y tú decides si deseas continuar el siguiente mes.</div>
+      </article>
+      <article class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)"><span>¿Debo pagar antes de consultar disponibilidad?</span><i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">No. Primero arma tu pedido y confirma la disponibilidad por WhatsApp; después podrás completar el pago con seguridad.</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- MÉTODOS DE PAGO -->
+  <section class="payment-section" id="pagos">
+    <h3>Métodos de pago</h3>
+    <div class="payment-strip" aria-label="Aceptamos Yape, Plin, BCP, Interbank, BBVA y Scotiabank">
+      <div class="payment-strip-track">
+        <img src="assets/payments/payment-methods-strip-v4.png" alt="Yape, Plin, BCP, Interbank, BBVA y Scotiabank" loading="lazy" />
+        <img src="assets/payments/payment-methods-strip-v4.png" alt="" aria-hidden="true" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CHECKOUT INTEGRADO — ESTILO V3 -->
+  <section class="detail-view checkout-view checkout-v3-view" id="checkoutModal" aria-hidden="true">
+    <article class="checkout-v3-panel" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <button type="button" class="detail-close" id="checkoutClose" aria-label="Cerrar checkout"><i class="fa-solid fa-xmark"></i></button>
+      <span class="checkout-step">CHECKOUT</span>
+      <h3 id="checkoutTitle">Revisa y confirma tu pedido</h3>
+      <p class="checkout-subtitle">Verifica tus productos, el total y el método de pago antes de continuar por WhatsApp.</p>
+
+      <div class="checkout-items" id="checkoutItems"></div>
+
+      <div class="checkout-summary" id="checkoutSummary">
+        <div><span>Subtotal</span><strong id="checkoutSubtotal">—</strong></div>
+        <div id="checkoutAutomaticRow"><span>Descuento automático</span><strong id="checkoutAutomatic">—</strong></div>
+        <div id="checkoutCouponRow"><span>Cupón</span><strong id="checkoutCoupon">—</strong></div>
+        <div class="checkout-total-row"><span>Total</span><strong id="checkoutTotal">—</strong></div>
+      </div>
+
+      <h4 class="checkout-payment-title-v3">Método de pago</h4>
+      <div class="checkout-payment-methods-v3" id="checkoutPaymentMethods">
+        <button type="button" class="checkout-pay-choice-v3 active" data-checkout-payment="yape">Yape</button>
+        <button type="button" class="checkout-pay-choice-v3" data-checkout-payment="plin">Plin</button>
+        <button type="button" class="checkout-pay-choice-v3" data-checkout-payment="transferencia">Transferencia</button>
+      </div>
+
+      <div class="checkout-payment-details-v3" id="checkoutPaymentDetails">
+        <div class="checkout-payment-total-v3"><span>Total a pagar</span><strong id="checkoutPaymentTotal">—</strong></div>
+        <div class="checkout-payment-main-v3">
+          <img id="checkoutPaymentQr" src="assets/payments/yape-qr.jpg" alt="QR de Yape">
+          <div class="checkout-payment-account-v3">
+            <small id="checkoutPaymentLabel">Número Yape</small>
+            <strong id="checkoutPaymentAccount">935 111 590</strong>
+            <button type="button" id="checkoutCopyPayment"><i class="fa-regular fa-copy"></i> Copiar número</button>
+          </div>
+        </div>
+        <div class="checkout-transfer-v3" id="checkoutTransferText" hidden>
+          <p>Selecciona transferencia y solicita los datos actualizados por WhatsApp.</p>
+          <div class="checkout-bank-list" aria-label="Bancos disponibles">
+            <span class="bank-bcp">BCP</span>
+            <span class="bank-interbank">Interbank</span>
+            <span class="bank-bbva">BBVA</span>
+            <span class="bank-scotia">Scotiabank</span>
+          </div>
+        </div>
+      </div>
+
+      <label class="checkout-confirm-v3"><input id="checkoutConfirmAvailability" type="checkbox"> Confirmar disponibilidad antes de pagar.</label>
+
+      <div class="checkout-actions checkout-actions-v3">
+        <button type="button" class="checkout-back" id="checkoutBack"><i class="fa-solid fa-arrow-left"></i> Volver al carrito</button>
+        <a id="checkoutConfirmWhatsapp" class="checkout-whatsapp-v3 disabled" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true"><i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp</a>
+      </div>
+    </article>
+  </section>
+
+  <!-- MODAL PAGO -->
+  <section class="detail-view" id="paymentModal">
+    <div class="detail-panel payment-modal-panel">
+      <button type="button" class="detail-close" onclick="closePaymentModal()"><i class="fa-solid fa-xmark"></i></button>
+      <span class="payment-eyebrow">PAGO SEGURO</span>
+      <h3 id="paymentModalTitle">¿Cómo deseas pagar?</h3>
+      <p id="paymentModalHelp">Elige un método. Confirma la disponibilidad por WhatsApp antes de pagar.</p>
+      <div class="payment-order-summary">
+        <span id="paymentProductName">Servicio seleccionado</span>
+        <strong id="paymentProductTotal">—</strong>
+      </div>
+      <div class="payment-choice-grid">
+        <button type="button" class="payment-choice active" data-payment="yape" onclick="selectPaymentOption('yape', this)">Yape</button>
+        <button type="button" class="payment-choice" data-payment="plin" onclick="selectPaymentOption('plin', this)">Plin</button>
+        <button type="button" class="payment-choice" data-payment="transferencia" onclick="selectPaymentOption('transferencia', this)">Transferencia</button>
+      </div>
+      <div class="qr-box" id="paymentQrBox">
+        <img id="paymentModalQr" src="assets/payments/yape-icon.png" alt="QR de Pago" />
+      </div>
+      <button id="paymentQrZoomButton" class="payment-qr-download" type="button"><i class="fa-solid fa-expand"></i> Ampliar QR</button>
+      <div class="phone-copy-box" id="paymentPhoneBox">
+        <span class="phone-number" id="payPhoneNumber">935 111 590</span>
+        <button class="btn-copy" onclick="copyNumber()"><i class="fa-solid fa-copy"></i> Copiar</button>
+      </div>
+      <p id="paymentTransferText" class="payment-transfer-text">Para transferencia bancaria te enviaremos los datos actualizados por WhatsApp.</p>
+      <p class="payment-owner">Titular: <strong>Lenin Morales V.</strong></p>
+      <details class="payment-instructions">
+        <summary><i class="fa-solid fa-circle-info"></i> Cómo completar el pago</summary>
+        <ol>
+          <li>Abre Yape o Plin y selecciona la opción para escanear un QR.</li>
+          <li>Escanea este código y verifica los datos del destinatario.</li>
+          <li>Ingresa el total exacto de <strong id="paymentInstructionTotal">—</strong>.</li>
+          <li>Después del pago, confirma tu pedido mediante WhatsApp.</li>
+        </ol>
+      </details>
+      <a href="#" id="paymentWhatsapp" class="payment-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Confirmar y continuar por WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- AMPLIACIÓN INTERNA DEL QR -->
+  <section class="detail-view" id="qrZoomModal">
+    <div class="qr-zoom-panel">
+      <button class="detail-close" id="qrZoomClose" aria-label="Cerrar QR"><i class="fa-solid fa-xmark"></i></button>
+      <span>Escanea el código desde otro dispositivo</span>
+      <img id="qrZoomImage" src="" alt="QR de pago ampliado" />
+    </div>
+  </section>
+
+  <!-- MODAL DETALLES — ESTILO V3 -->
+  <section class="detail-view" id="detailView">
+    <article class="detail-panel detail-panel-v3" id="detailPanel" role="dialog" aria-modal="true" aria-labelledby="detailName">
+      <button class="detail-close" id="detailClose" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+
+      <div class="product-detail-head-v3">
+        <img id="detailLogo" src="" alt="" />
+        <div class="product-detail-title-v3">
+          <span class="detail-stock-v3" id="detailStock">Disponible</span>
+          <h2 id="detailName"></h2>
+          <p id="detailDescription"></p>
+        </div>
+      </div>
+
+      <div class="spec-grid-v3" id="detailSpecGrid">
+        <div class="spec-v3"><small>Duración</small><strong id="detailDuration">Plan mensual</strong></div>
+        <div class="spec-v3"><small>Categoría</small><strong id="detailCategory">Streaming</strong></div>
+        <div class="spec-v3"><small>Entrega</small><strong id="detailDelivery">Inmediata</strong></div>
+        <div class="spec-v3"><small>Soporte</small><strong id="detailSupport">Garantizado</strong></div>
+      </div>
+
+      <section class="detail-section-v3">
+        <h3>Qué incluye</h3>
+        <ul class="feature-list-v3" id="detailFeatures"></ul>
+      </section>
+
+      <section class="detail-section-v3 detail-conditions-v3">
+        <h3>Condiciones y garantía</h3>
+        <p id="detailConditions">Consulta las condiciones del servicio antes de comprar.</p>
+        <p id="detailNote"></p>
+      </section>
+
+      <div class="detail-footer-v3">
+        <div class="detail-price-v3">
+          <del id="detailOldPrice" hidden></del>
+          <strong id="detailPrice"></strong>
+          <small id="detailPriceDuration">Plan mensual</small>
+        </div>
+
+        <div class="detail-qty-v3" aria-label="Cantidad">
+          <button id="detailQtyMinus" type="button" aria-label="Restar cantidad"><i class="fa-solid fa-minus"></i></button>
+          <strong id="detailQtyValue">1</strong>
+          <button id="detailQtyPlus" type="button" aria-label="Sumar cantidad"><i class="fa-solid fa-plus"></i></button>
+        </div>
+
+        <button type="button" class="detail-cart-btn-v3" id="detailAddCart"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+        <button type="button" class="detail-buy-btn-v3" id="detailBuyNow"><i class="fa-solid fa-bolt"></i> Comprar ahora</button>
+      </div>
+    </article>
+  </section>
+
+  <!-- MODAL ARMAR COMBO — ESTILO V3 -->
+  <section class="detail-view combo-v3-view" id="customComboModal" aria-hidden="true">
+    <article class="combo-v3-panel" role="dialog" aria-modal="true" aria-labelledby="comboModalTitle">
+      <button class="detail-close" type="button" onclick="closeCustomComboModal()" aria-label="Cerrar combo"><i class="fa-solid fa-xmark"></i></button>
+      <div class="combo-v3-head">
+        <span class="checkout-step">COMBO PERSONALIZADO</span>
+        <h2 id="comboModalTitle">Selecciona tus servicios</h2>
+        <p>Elige al menos 2 plataformas. Solo esta lista se desplaza.</p>
+      </div>
+      <div class="combo-v3-scroll">
+        <div class="combo-v3-options" id="comboOptions"></div>
+      </div>
+      <div class="combo-v3-fixed-footer">
+        <div class="combo-v3-summary" id="comboSummaryV3" hidden></div>
+        <p class="combo-v3-hint" id="comboHintV3">Selecciona 2 o más servicios para calcular tu precio.</p>
+        <button id="buyComboV3" class="combo-v3-buy" type="button" disabled>Comprar combo</button>
+      </div>
+    </article>
+  </section>
+
+  <!-- INFORMACIÓN SECUNDARIA EN MENÚ MÁS -->
+  <section class="detail-view info-hub-view" id="infoHubModal" aria-hidden="true">
+    <article class="info-hub-panel" role="dialog" aria-modal="true" aria-labelledby="infoHubTitle">
+      <button type="button" class="detail-close" id="infoHubClose" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <div id="infoHubContent"></div>
+    </article>
+  </section>
+
+  <!-- MENSAJES Y CONFIRMACIONES DENTRO DE LA TIENDA -->
+  <section class="site-dialog-view" id="siteDialog" aria-hidden="true">
+    <article class="site-dialog-panel" role="alertdialog" aria-modal="true" aria-labelledby="siteDialogTitle" aria-describedby="siteDialogMessage">
+      <div class="site-dialog-icon" id="siteDialogIcon"><i class="fa-solid fa-circle-info"></i></div>
+      <div class="site-dialog-copy">
+        <span class="site-dialog-eyebrow">MORALES STREAMING</span>
+        <h3 id="siteDialogTitle">Aviso</h3>
+        <p id="siteDialogMessage"></p>
+      </div>
+      <div class="site-dialog-actions">
+        <button type="button" class="site-dialog-secondary" id="siteDialogCancel">Cancelar</button>
+        <button type="button" class="site-dialog-primary" id="siteDialogAccept">Aceptar</button>
+      </div>
+    </article>
+  </section>
+
+  <footer class="footer-v3-links">
+    <div class="footer-v3-inner">
+      <p>&copy; 2026 Morales Streaming | Perú</p>
+      <nav aria-label="Información legal">
+        <a href="terminos.html" data-legal-panel="terms">Términos</a>
+        <a href="garantia.html" data-legal-panel="warranty">Garantía</a>
+        <a href="privacidad.html" data-legal-panel="privacy">Privacidad</a>
+        <a href="contacto.html" data-legal-panel="contact">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- BOTÓN WHATSAPP -->
+  <a href="https://api.whatsapp.com/send?phone=51935111590&text=%F0%9F%90%B1%E2%80%8D%E2%AC%9B%20%21Hola%20Morales%20Streaming%21%20Vengo%20de%20tu%20p%C3%A1gina%20web%20%F0%9F%8C%90%0A%0A%F0%9F%92%AC%20Tengo%20una%20consulta%20general%20sobre%20tus%20servicios%20y%20disponibilidad.%20%C2%BFMe%20brindas%20informaci%C3%B3n%20por%20favor%3F" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span>Contactar</span>
+  </a>
+
+  <!-- VENTANITA FLASH 1 -->
+  <div class="flash-offer-card" id="flashOffer">
+    <button class="flash-close" onclick="closeFlashOffer()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="flash-content">
+      <span class="flash-badge">⚡ ¡SUPER OFERTA FLASH!</span>
+      <h4 id="flashTitle">Cargando...</h4>
+      <p id="flashSub">Oferta exclusiva por tiempo limitado</p>
+      <div class="flash-price-box">
+        <span class="flash-old" id="flashOldPrice"></span>
+        <span class="flash-new" id="flashNewPrice"></span>
+      </div>
+      <a href="#" id="flashWhatsappBtn" target="_blank" class="flash-btn">
+        <i class="fab fa-whatsapp"></i> Comprar Ahora
+      </a>
+    </div>
+  </div>
+
+
+  
+  <!-- TOAST DE ACTIVIDAD -->
+  <div class="live-viewers-toast" id="liveViewersToast" aria-live="polite">
+    <span class="live-viewers-dot"></span>
+    <span id="liveViewersText">8 personas viendo ahora</span>
+  </div>
+
+  <!-- NOTIFICACIÓN TOAST MODERNA -->
+  <div id="toastNotification" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: linear-gradient(135deg, rgba(22, 27, 51, 0.98), rgba(10, 13, 32, 0.98)); border: 1px solid rgba(0, 212, 255, 0.6); color: #ffffff; padding: 12px 24px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(0,212,255,0.3); z-index: 999999; display: flex; align-items: center; gap: 8px; opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; pointer-events: none;">
+    <i class="fa-solid fa-circle-check" style="color: #00ff95; font-size: 1rem;"></i>
+    <span id="toastText">¡Número copiado al portapapeles!</span>
+  </div>
+
+  <!-- 🚀 BOTÓN SCROLL TO TOP -->
+  <button type="button" class="scroll-top-float" id="scrollTopBtn" onclick="scrollToTop()" title="Ir arriba">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <div id="cart-overlay" class="cart-overlay" aria-hidden="true"></div>
+
+  <!-- 🛒 PANEL LATERAL DEL CARRITO (ÚNICO) -->
+  <div id="cart-modal" style="position: fixed; top: 0; right: -400px; width: 100%; max-width: 380px; height: 100%; background: #0a0d20; border-left: 1px solid rgba(255,255,255,0.1); z-index: 99999; box-shadow: -10px 0 40px rgba(0,0,0,0.7); transition: right 0.3s ease; padding: 24px; display: flex; flex-direction: column;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+      <h3 style="color: #fff; margin: 0; font-size: 1.2rem;"><i class="fa-solid fa-cart-shopping"></i> Tu Carrito</h3>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <button id="clear-cart" title="Vaciar carrito" aria-label="Vaciar todo el carrito"><i class="fa-solid fa-trash-can"></i><span>Vaciar carrito</span></button>
+        <button id="close-cart" aria-label="Cerrar carrito"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+
+    <div id="cart-items-container" style="flex: 1; overflow-y: auto; padding: 20px 0;">
+      <p style="color: var(--text-gray); text-align: center; margin-top: 50px;">Tu carrito está vacío</p>
+    </div>
+
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+      <div class="cart-coupon-box">
+        <label for="cart-coupon-input"><i class="fa-solid fa-ticket"></i> ¿Tienes un cupón?</label>
+        <div class="cart-coupon-row">
+          <input id="cart-coupon-input" type="text" placeholder="Código de descuento" autocomplete="off" />
+          <button id="apply-coupon" type="button">Aplicar</button>
+        </div>
+        <p id="cart-coupon-message"></p>
+      </div>
+      <div id="cart-next-tier" style="display:none; text-align:center; font-size:0.75rem; color:#7fdcff; background:rgba(0,212,255,0.1); border:1px dashed rgba(0,212,255,0.3); padding:8px; border-radius:10px; margin-bottom:12px;"></div>
+
+      <div id="cart-discount-badge" style="display:none; text-align:right; margin-bottom:6px;">
+        <span style="background: rgba(255, 0, 204, 0.2); border: 1px solid #ff00cc; color: #ff77e9; font-size: 0.7rem; font-weight: 800; padding: 2px 8px; border-radius: 999px;" id="cart-discount-text">🔥 ¡Ahorras S/0!</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px;">
+        <span id="cart-old-total" style="display:none; color:#ff4d6d; text-decoration:line-through; font-size:0.85rem; font-weight:700;"></span>
+        <span id="cart-total" style="color: var(--accent, #00d4ff); font-size: 1.1rem; font-weight: bold; margin-left:auto;">Total: —</span>
+      </div>
+      <button id="checkout-whatsapp" style="width: 100%; background: #25d366; color: #fff; border: none; padding: 14px; border-radius: 12px; font-weight: bold; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
+        <i class="fa-solid fa-arrow-right" style="font-size: 1.05rem;"></i> Revisar pedido
+      </button>
+    </div>
+  </div>
+
+  <!-- Enlace a tu archivo JavaScript externo -->
+  <script src="js/config.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/combo.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/commerce-v3.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

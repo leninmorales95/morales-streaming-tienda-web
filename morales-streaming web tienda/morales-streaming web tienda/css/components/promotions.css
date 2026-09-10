@@ -1,0 +1,362 @@
+/* ESTILOS Y SELLO AUTOMÁTICO DE AGOTADO */
+.card.sold-out {
+  opacity: 0.65;
+  filter: grayscale(0.4);
+  cursor: not-allowed !important;
+}
+
+.card.sold-out:hover { transform: none !important; box-shadow: none !important; }
+.card.sold-out .logo-wrap { position: relative; }
+.card.sold-out .logo-wrap::after {
+  content: "AGOTADO";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg);
+  background: #dc2626;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 0.95rem;
+  padding: 6px 18px;
+  border-radius: 8px;
+  border: 2px solid #ffffff;
+  letter-spacing: 2px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  pointer-events: none;
+}
+.card.sold-out .card-tag { background: rgba(220, 38, 38, 0.95) !important; border-color: #ff4d6d !important; color: #ffffff !important; }
+.card.sold-out .btn-buy {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #8a94a6 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.detail-custom-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  border-radius: 28px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.detail-custom-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35) contrast(1.1);
+}
+
+.flash-offer-card {
+  display: none !important;
+  position: fixed !important;
+  left: 25px !important;
+  z-index: 998 !important;
+  width: 260px;
+  background: linear-gradient(145deg, rgba(22, 27, 51, 0.95), rgba(10, 13, 32, 0.98));
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  animation: flashFloat 3s ease-in-out infinite alternate !important;
+}
+
+#flashOffer {
+  bottom: 25px !important;
+  border: 1px solid rgba(255, 0, 204, 0.8);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 0, 204, 0.4);
+}
+
+#flashOffer2 {
+  bottom: 230px !important;
+  border: 1px solid rgba(0, 212, 255, 0.8);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 212, 255, 0.4);
+}
+
+@keyframes flashFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+.flash-new {
+  font-size: 1.25rem;
+  color: #00ff95;
+  font-weight: 900;
+  animation: pricePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pricePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); filter: brightness(1.2); }
+}
+
+.flash-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: 0.2s;
+}
+.flash-close:hover { background: rgba(255, 255, 255, 0.2); }
+
+.flash-badge {
+  display: inline-block;
+  background: rgba(255, 0, 204, 0.25);
+  border: 1px solid rgba(255, 0, 204, 0.6);
+  color: #ff77e9;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.flash-offer-card h4 { margin: 0 0 2px; font-size: 1rem; font-weight: 800; color: #fff; }
+.flash-offer-card p { margin: 0 0 10px; font-size: 0.78rem; color: var(--text-gray); }
+
+.flash-price-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.flash-old {
+  font-size: 0.85rem;
+  color: #ff4d6d;
+  text-decoration: line-through;
+  font-weight: 700;
+}
+
+.flash-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #fff;
+  padding: 8px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  transition: 0.2s;
+}
+.flash-btn:hover { transform: scale(1.03); filter: brightness(1.1); }
+
+#customComboModal .detail-title h2 { font-size: 1.5rem !important; margin-bottom: 2px !important; }
+#customComboModal .detail-title p { font-size: 0.8rem !important; }
+#customComboModal .detail-header { margin-bottom: 8px !important; }
+#customComboModal .btn-action-custom { padding: 10px 18px !important; font-size: 0.85rem !important; margin-top: 10px !important; border-radius: 999px !important; }
+#customComboModal .combo-summary-box { padding: 12px 16px !important; margin-top: 10px !important; border-radius: 14px !important; }
+#customComboModal .summary-text h4 { font-size: 0.9rem !important; }
+#customComboModal .summary-text p { font-size: 0.72rem !important; }
+#customComboModal .discount-badge-tag { font-size: 0.62rem !important; padding: 2px 6px !important; }
+#customComboModal .old-price-strike { font-size: 0.9rem !important; }
+#customComboModal .total-price-val { font-size: 1.5rem !important; }
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+/* ESTILOS PARA LA SECCIÓN FAQ */
+.faq-section {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto 42px;
+}
+.faq-container {
+  display: grid;
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.faq-item {
+  background: linear-gradient(145deg, rgba(22, 27, 51, 0.86), rgba(9, 12, 34, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+.faq-item:hover { border-color: rgba(0, 212, 255, 0.3); }
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 18px 20px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.faq-question i { color: var(--accent); transition: transform 0.3s ease; }
+.faq-item.active .faq-question i { transform: rotate(180deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 20px;
+  color: var(--text-gray);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.faq-item.active .faq-answer {
+  max-height: 180px;
+  padding: 0 20px 18px 20px;
+}
+
+/* 🚀 BOTÓN FLOTANTE SCROLL TO TOP */
+.scroll-top-float {
+  position: fixed !important;
+  bottom: 90px !important;
+  right: 25px !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, rgba(22, 27, 51, 0.95), rgba(10, 13, 32, 0.98)) !important;
+  border: 1px solid rgba(0, 212, 255, 0.5) !important;
+  color: #00d4ff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.1rem !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(0,212,255,0.2) !important;
+  z-index: 999 !important;
+  cursor: pointer !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.3s ease !important;
+}
+
+.scroll-top-float.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.scroll-top-float:hover {
+  transform: translateY(-4px) scale(1.08) !important;
+  background: linear-gradient(135deg, #00d4ff, #2575fc) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 12px 25px rgba(0,212,255,0.4) !important;
+}
+
+.more-platforms-card {
+  cursor: pointer !important;
+}
+
+/* 🚀 Estilo exclusivo para el botón de la tarjeta "Arma tu Combo" */
+.custom-card-btn {
+  margin-top: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: 100% !important;
+  height: 36px !important;
+  padding: 0 12px !important;
+  border-radius: 10px !important;
+  background: linear-gradient(135deg, #6a11cb, #2575fc, #00d4ff) !important;
+  border: 1px solid rgba(0, 212, 255, 0.6) !important;
+  color: #ffffff !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3) !important;
+  transition: all 0.3s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.custom-card-btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5) !important;
+}
+
+/* 🚀 CONTENEDOR DEL FONDO ANIMADO DE STREAMING */
+.hero-streaming-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  border-radius: 28px;
+  opacity: 0.35;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.hero-scroll-col {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.hero-scroll-col.up {
+  animation: scrollUp 25s linear infinite;
+}
+
+.hero-scroll-col.down {
+  animation: scrollDown 25s linear infinite;
+}
+
+.hero-scroll-col img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes scrollDown {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* 🎯 Aviso de siguiente descuento en el carrito */
+#cart-next-tier {
+  animation: nextTierPulse 2s ease-in-out infinite;
+}
+
+@keyframes nextTierPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Animación del contador del carrito al añadir producto */
+#cart-count {
+  display: inline-block;
+}
+
