@@ -1,0 +1,95 @@
+/* Compatibility entry point: preserves the original cascade in the same order. */
+@import url("base.css");
+@import url("layout.css");
+@import url("components/cards.css");
+@import url("components/sections.css");
+@import url("components/modals.css");
+@import url("components/promotions.css");
+@import url("components/checkout.css");
+@import url("responsive.css");
+@import url("components/v3-catalog-details.css");
+@import url("components/v3-commerce-flow.css");
+
+/* =========================================================
+   MARCA NAVBAR — MORALES STREAMING
+   ========================================================= */
+
+.brand-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.25px;
+
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.brand-mini .brand-morales {
+  color: #f5f7ff;
+}
+
+.brand-mini .brand-streaming {
+  color: var(--accent, #00d4ff);
+}
+
+/* Misma identidad en móvil y escritorio */
+.mobile-brand-name {
+  font-weight: 800;
+}
+
+.mobile-brand-name strong {
+  color: var(--accent, #00d4ff);
+}
+
+/* =========================================================
+   MEJORAS PENDIENTES INTEGRADAS — 2026-09
+   ========================================================= */
+.cart-overlay{position:fixed;inset:0;background:rgba(2,5,15,.62);backdrop-filter:blur(2px);z-index:99998;opacity:0;visibility:hidden;transition:.25s ease}.cart-overlay.active{opacity:1;visibility:visible}
+#cart-modal{z-index:99999!important}
+.mobile-more-btn{display:none}.more-nav-btn{gap:6px!important}.more-menu{position:fixed;top:68px;right:max(24px,calc((100vw - 1250px)/2));z-index:100020;width:min(330px,calc(100% - 24px));padding:8px;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:#0d1226;box-shadow:0 22px 60px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.2s ease}.more-menu.active{opacity:1;visibility:visible;transform:none}.more-menu button,.more-menu a{width:100%;display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;padding:10px;border:0;border-radius:11px;background:transparent;color:#fff;text-align:left;text-decoration:none;font:inherit;cursor:pointer}.more-menu button:hover,.more-menu a:hover{background:rgba(0,212,255,.08)}.more-menu i{color:#55def4;text-align:center}.more-menu strong,.more-menu small{display:block}.more-menu strong{font-size:.76rem}.more-menu small{margin-top:2px;color:#8e9bb2;font-size:.62rem}.info-hub-view{z-index:100040!important}.info-hub-panel{position:relative;width:min(680px,calc(100% - 24px));max-height:calc(100dvh - 28px);overflow:auto;padding:28px;border-radius:22px;background:linear-gradient(155deg,#11172f,#080c1e);border:1px solid rgba(0,212,255,.20);box-shadow:0 28px 90px rgba(0,0,0,.7)}.info-hub-eyebrow{color:#73e7ff;font-size:.67rem;font-weight:900;letter-spacing:.08em}.info-hub-panel h2{margin:8px 40px 7px 0;font-size:1.55rem}.info-hub-panel>div>p{color:#9eabc0}.info-hub-primary{margin-top:18px;min-height:46px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;background:linear-gradient(135deg,#6637ef,#09c9ef);color:#fff;text-decoration:none;font-weight:850}.info-hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.info-hub-grid article{display:flex;gap:10px;padding:13px;border:1px solid rgba(255,255,255,.08);border-radius:13px;background:rgba(255,255,255,.03)}.info-hub-grid i{color:#42dff3;margin-top:2px}.info-hub-grid strong,.info-hub-grid small{display:block}.info-hub-grid strong{font-size:.78rem}.info-hub-grid small{margin-top:4px;color:#99a7bd;font-size:.68rem;line-height:1.4}.info-hub-faq details{margin-top:9px;padding:12px 14px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.03)}.info-hub-faq summary{cursor:pointer;font-weight:800;font-size:.78rem}.info-hub-faq p{color:#9eabc0;font-size:.70rem;line-height:1.45}
+/* Detalle recupera el color de cada plataforma. */
+.detail-panel-v3{border-color:color-mix(in srgb,var(--modal-mark,#00d4ff) 52%,rgba(255,255,255,.08))!important;box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 42px var(--modal-glow,rgba(0,212,255,.12))!important;background:radial-gradient(circle at 7% 5%,var(--modal-glow-2,rgba(0,212,255,.10)),transparent 34%),linear-gradient(145deg,#11162b,#090d1c)!important}.detail-section-v3 h3{position:relative}.detail-section-v3 h3:after{content:"";display:block;width:30px;height:2px;margin-top:7px;border-radius:9px;background:var(--modal-mark,#00d4ff)}.spec-v3{border-color:color-mix(in srgb,var(--modal-mark,#00d4ff) 28%,rgba(255,255,255,.08))!important}
+/* Combo: logos centrados y uniformes sin deformar. */
+.combo-option-v3 img{width:42px!important;height:42px!important;padding:0!important;object-fit:cover!important;object-position:center!important;box-sizing:border-box!important}
+/* Checkout: un poco más de espacio útil y mejor respiración. */
+.checkout-v3-panel{width:min(740px,calc(100% - 24px));max-height:calc(100dvh - 20px);padding:26px 26px 24px}.checkout-payment-details-v3{padding:14px}.checkout-confirm-v3{margin:15px 0}.checkout-actions-v3{margin-top:2px}
+/* Móvil: logos completos y centrados; no se achica la zona visual. */
+@media(max-width:650px){.mobile-more-btn{display:grid!important;place-items:center!important;flex:0 0 44px!important;width:44px!important;height:44px!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:14px!important;background:rgba(255,255,255,.06)!important;color:#fff!important;font-size:18px!important}.top-bar{justify-content:flex-start!important}.brand-left-box{margin-right:auto!important}.mobile-search-btn{margin-left:auto!important}.more-menu{top:64px;right:8px;width:min(330px,calc(100% - 16px))}.info-hub-panel{padding:22px 16px}.info-hub-grid{grid-template-columns:1fr}.product-visual-v3{height:126px!important}.product-image-stage-v3{background:#fff!important}.product-image-stage-v3 img{width:100%!important;height:100%!important;padding:10px 12px!important;object-fit:contain!important;object-position:center center!important}.checkout-v3-panel{width:calc(100% - 10px)!important;max-height:calc(100dvh - 10px)!important;padding:19px 14px 18px!important}.checkout-payment-details-v3{padding:13px!important}.checkout-confirm-v3{margin:14px 0!important}}
+@media(max-width:430px){.product-visual-v3{height:120px!important}.product-image-stage-v3 img{padding:9px 10px!important}}
+
+/* Diálogos propios: sustituyen las alertas genéricas del navegador. */
+.site-dialog-view{position:fixed;inset:0;z-index:100100;display:grid;place-items:center;padding:16px;background:rgba(2,5,16,.78);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:.2s ease}.site-dialog-view.active{opacity:1;visibility:visible}.site-dialog-panel{width:min(440px,100%);padding:24px;display:grid;grid-template-columns:48px 1fr;gap:14px;border:1px solid rgba(0,212,255,.22);border-radius:20px;background:linear-gradient(145deg,#131a35,#080c1c);box-shadow:0 28px 80px rgba(0,0,0,.72)}.site-dialog-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:rgba(0,212,255,.10);color:#55e3ff;font-size:1.25rem}.site-dialog-view[data-tone="warning"] .site-dialog-icon{background:rgba(255,190,70,.11);color:#ffd36d}.site-dialog-copy{min-width:0}.site-dialog-eyebrow{color:#53dff7;font-size:.62rem;font-weight:900;letter-spacing:.09em}.site-dialog-copy h3{margin:5px 0 7px;color:#fff;font-size:1.15rem}.site-dialog-copy p{margin:0;color:#aab6ca;font-size:.76rem;line-height:1.55}.site-dialog-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:9px;margin-top:7px}.site-dialog-actions button{min-height:40px;padding:0 16px;border-radius:10px;font:inherit;font-size:.72rem;font-weight:850;cursor:pointer}.site-dialog-secondary{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#c5cede}.site-dialog-primary{border:0;background:linear-gradient(110deg,#00b9e6,#54dfff);color:#041019}
+
+/* Combo y pago más compactos para aprovechar mejor el alto disponible. */
+.combo-v3-panel{margin:auto}.combo-v3-head{padding-bottom:10px}.combo-v3-scroll{min-height:0}.combo-v3-fixed-footer{padding-top:10px}.checkout-v3-panel{margin:auto}.checkout-items:empty,.checkout-summary:empty{display:none}.checkout-payment-title-v3{margin-top:12px}.checkout-payment-details-v3{margin-top:8px}.checkout-payment-total-v3{margin-bottom:7px}.checkout-confirm-v3{margin:10px 0!important}.checkout-actions-v3{gap:8px}
+
+@media(max-width:650px){.combo-v3-panel{max-height:calc(100dvh - 10px)!important}.combo-v3-head{padding:16px 14px 8px!important}.combo-v3-head h2{font-size:1.18rem;margin-top:2px}.combo-v3-head p{font-size:.68rem}.combo-option-v3{min-height:58px;padding:7px 9px}.combo-option-v3 img{width:38px!important;height:38px!important}.combo-v3-fixed-footer{padding:8px 14px 11px!important}.combo-v3-summary{margin-bottom:6px;padding:7px 9px}.combo-v3-hint{margin-bottom:6px}.combo-v3-buy{min-height:42px}.checkout-v3-panel{padding:14px 12px 12px!important}.checkout-subtitle{margin-bottom:10px}.checkout-payment-title-v3{margin:10px 0 7px}.checkout-payment-details-v3{padding:10px!important}.checkout-payment-main-v3{gap:10px}.checkout-payment-main-v3 img{width:68px!important;height:68px!important}.checkout-confirm-v3{margin:9px 0!important}.checkout-actions-v3{margin-top:0!important}.site-dialog-panel{padding:19px;grid-template-columns:42px 1fr}.site-dialog-icon{width:42px;height:42px}.site-dialog-actions{display:grid;grid-template-columns:1fr 1fr}.site-dialog-actions button:only-child{grid-column:1/-1}}
+
+/* Simplificación final de tarjetas: sin etiqueta Oferta, Destacado, Precio oferta ni ahorro. */
+.image-badge-v3,.featured-label-v3,.price-label-v3,.saving-badge-v3{display:none!important}
+
+/* FAQ visible al final del recorrido, antes de los pagos. */
+.faq-heading{text-align:center;margin-bottom:18px}.faq-heading span{color:#58def5;font-size:.66rem;font-weight:900;letter-spacing:.09em}.faq-heading h2{margin:6px 0 0;color:#fff;font-size:clamp(1.35rem,3vw,1.9rem)}.desktop-info-link{font-family:inherit;font-size:.75rem!important;font-weight:500!important;line-height:normal;white-space:nowrap}.desktop-info-link i{color:#53dff6;font-size:.68rem}
+.referral-steps{display:grid;gap:9px;margin:18px 0}.referral-steps article{display:grid;grid-template-columns:34px 1fr;gap:11px;align-items:center;padding:11px 12px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.025)}.referral-steps article>span{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,#7142f5,#13c6ed);color:#fff;font-size:.74rem;font-weight:900}.referral-steps strong,.referral-steps small{display:block}.referral-steps strong{color:#fff;font-size:.76rem}.referral-steps small{margin-top:3px;color:#9eabc0;font-size:.66rem;line-height:1.4}.referral-note{display:flex!important;gap:9px;align-items:flex-start;margin:0 0 14px!important;padding:10px 12px;border-radius:11px;background:rgba(0,212,255,.055);color:#a9b6ca!important;font-size:.66rem!important;line-height:1.45}.referral-note i{color:#52dff5;margin-top:2px}
+.checkout-payment-main-v3[hidden],.checkout-transfer-v3[hidden]{display:none!important}.checkout-transfer-v3>p{margin:0 0 10px;color:#aebbd0;font-size:.72rem}.checkout-bank-list{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.checkout-bank-list span{min-height:38px;display:flex;align-items:center;justify-content:center;padding:0 8px;border:1px solid rgba(255,255,255,.10);border-radius:9px;background:rgba(255,255,255,.04);font-size:.68rem;font-weight:900}.bank-bcp{color:#ff7a38}.bank-interbank{color:#30c797}.bank-bbva{color:#5c96ed}.bank-scotia{color:#ff5264}@media(max-width:520px){.checkout-bank-list{grid-template-columns:repeat(2,1fr)}}
+
+/* Combos alineados con la misma paleta de las tarjetas de productos. */
+.combo-premium-card{background:linear-gradient(180deg,rgba(18,22,45,.96),rgba(10,12,30,.98))!important;border:1px solid rgba(0,212,255,.18)!important;box-shadow:0 12px 28px rgba(0,0,0,.28)!important}
+.combo-premium-card:hover{border-color:rgba(0,212,255,.42)!important;box-shadow:0 18px 40px rgba(0,0,0,.42),0 0 20px rgba(0,212,255,.14)!important}
+.combo-label{background:rgba(255,255,255,.045)!important;border-color:rgba(255,255,255,.10)!important;color:#dce8ff!important}
+.combo-premium-card p{color:#9caed0!important}.combo-price-mini{color:#fff!important;font-size:1.85rem!important}
+.combo-premium-card a.combo-action,.custom-card-btn{background:rgba(255,255,255,.035)!important;border-color:rgba(0,212,255,.38)!important;color:#7fe8ff!important;box-shadow:none!important}
+.combo-premium-card a.combo-action:hover,.custom-card-btn:hover{background:rgba(0,212,255,.10)!important;color:#fff!important;border-color:rgba(0,212,255,.70)!important;box-shadow:none!important;transform:translateY(-1px)!important}
+
+/* Stock: conserva la posición superior, pero mejora nitidez y armonía con la tarjeta. */
+.card-badges-v3 .stock-badge-v3{padding:5px 9px!important;border-width:1px!important;border-radius:8px!important;background:#143f38!important;border-color:rgba(79,231,176,.42)!important;color:#b4f8d5!important;font-size:.64rem!important;font-weight:800!important;letter-spacing:.01em!important;line-height:1!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:0 3px 10px rgba(0,0,0,.22)!important}
+.card-badges-v3 .stock-badge-v3.stock-yellow{background:#4b3b16!important;border-color:rgba(255,210,91,.48)!important;color:#ffe8a1!important}
+.card-badges-v3 .stock-badge-v3.stock-red,.card-badges-v3 .stock-badge-v3.off{background:#542638!important;border-color:rgba(255,119,145,.48)!important;color:#ffc0cc!important}
+.card-badges-v3 .stock-badge-v3 i{font-size:.57rem!important;margin-right:2px}
+
+/* Pie de página: reserva la esquina derecha para los botones flotantes. */
+@media (min-width:901px){.footer-v3-inner{display:grid!important;grid-template-columns:1fr auto 1fr!important;position:relative}.footer-v3-inner>p{justify-self:start}.footer-v3-inner>nav{grid-column:2;justify-self:center}.footer-v3-inner:after{content:"";display:block;grid-column:3;width:180px;justify-self:end}}

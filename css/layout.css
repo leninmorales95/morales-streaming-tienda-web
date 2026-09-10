@@ -1,0 +1,273 @@
+/* NAVBAR FIJA */
+.top-bar-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  background: rgba(7, 8, 26, 0.90) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  z-index: 999 !important;
+}
+
+.top-bar {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.brand-left-box {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand-logo-mini {
+  height: 40px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
+}
+
+/* Marca de escritorio */
+.brand-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.25px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.brand-mini .brand-morales {
+  color: #f5f7ff;
+}
+
+.brand-mini .brand-streaming {
+  color: var(--accent, #00d4ff);
+}
+
+/* El punto antiguo ya no se usa en la marca de PC */
+.brand-dot {
+  display: none;
+}
+
+/* BUSCADOR */
+.search-box {
+  width: 320px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(5, 6, 18, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: var(--text-gray);
+  box-shadow: inset 0 0 14px rgba(0,0,0,0.16);
+  transition: all 0.25s ease;
+}
+
+.search-box:focus-within {
+  border-color: rgba(0, 212, 255, 0.45);
+  box-shadow: inset 0 0 14px rgba(0,0,0,0.16), 0 0 12px rgba(0,212,255,0.15);
+  width: 350px;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-white);
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.top-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.top-link {
+  color: var(--text-white);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: 0.2s ease;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.top-link:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.top-link.combo-nav-btn {
+  background: linear-gradient(135deg, rgba(255, 0, 204, 0.2), rgba(0, 212, 255, 0.2)) !important;
+  border: 1px solid rgba(0, 212, 255, 0.5) !important;
+  color: #00d4ff !important;
+  font-weight: 700 !important;
+}
+
+.top-link.combo-nav-btn:hover {
+  background: linear-gradient(135deg, #ff00cc, #00d4ff) !important;
+  color: #fff !important;
+}
+
+/* HERO */
+header {
+  width: min(1180px, calc(100% - 32px));
+  margin: 85px auto 24px !important;
+  padding: 20px 16px;
+}
+
+.hero-modern {
+  position: relative;
+  border-radius: 28px;
+  padding: 40px 24px;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, rgba(255,0,204,0.1), transparent 40%), linear-gradient(145deg, rgba(15,18,40,0.9), rgba(7,10,26,0.95));
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: var(--shadow);
+  text-align: center;
+  animation: flotar 4s ease-in-out infinite !important;
+  z-index: 1;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.hero-modern h1 {
+  margin: 14px auto 10px;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9) !important;
+  position: relative;
+  z-index: 2;
+}
+
+.gradient-text {
+  position: relative;
+  display: inline-block;
+  color: #0096d7 !important;
+  -webkit-text-fill-color: initial !important;
+  font-weight: 900 !important;
+}
+
+.gradient-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff00cc 0%, #b800ff 50%, #00d4ff 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.hero-sub {
+  max-width: 540px;
+  margin: 0 auto;
+  color: #ffffff !important;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 15px rgba(0, 0, 0, 0.8) !important;
+  font-weight: 650;
+  position: relative;
+  z-index: 2;
+}
+
+/* BANNER PROMOCIONAL DESLIZANTE */
+.auto-promo-banner {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto 24px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(22,27,51,.78), rgba(9,12,34,.86));
+  border: 1px solid rgba(255,255,255,.07);
+  box-shadow: 0 14px 32px rgba(0,0,0,.24);
+}
+
+.auto-promo-track {
+  display: flex;
+  width: max-content;
+  animation: autoPromoMove 18s linear infinite;
+}
+.auto-promo-banner:hover .auto-promo-track {
+  animation-play-state: paused !important;
+}
+
+.auto-promo-item {
+  width: 295px;
+  min-height: 78px;
+  padding: 16px 18px;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 12px;
+  border-right: 1px solid rgba(255,255,255,.06);
+}
+
+.auto-promo-item span {
+  grid-row: 1 / 3;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  font-size: 1.2rem;
+}
+
+.auto-promo-item strong { font-size: .95rem; line-height: 1.2; color: #fff; }
+.auto-promo-item small { color: var(--text-gray); font-size: .78rem; line-height: 1.3; }
+
+@keyframes autoPromoMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-590px); }
+}
+
+/* FILTROS */
+.dashboard-filter-section {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto 32px;
+  text-align: center;
+}
+.category-filter { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.category-chip { border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: #dce6ff; border-radius: 999px; padding: 9px 14px; font-family: inherit; font-size: .82rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: .22s ease; }
+.category-chip.active { background: linear-gradient(135deg, #6a11cb, #2575fc, #00d4ff); border-color: transparent; }
+
