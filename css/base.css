@@ -41,9 +41,15 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
+  /* El HTML inicial es sólo una plantilla que JS reemplaza por la bienvenida.
+     Se mantiene oculto para que nunca aparezca como un destello previo. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.4s ease, visibility 0.4s ease;
   padding: 20px;
 }
+.loader.is-ready { opacity: 1; visibility: visible; pointer-events: auto; }
 .loader.hide { opacity: 0; visibility: hidden; }
 
 html.skip-welcome .loader {
