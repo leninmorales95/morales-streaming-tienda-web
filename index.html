@@ -32,6 +32,8 @@
         document.documentElement.classList.add("skip-welcome");
         pageUrl.searchParams.delete("sync");
         window.history.replaceState(null, "", pageUrl.toString());
+      } else {
+        document.documentElement.classList.add("welcome-pending");
       }
     } catch (error) {}
     try {
