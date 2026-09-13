@@ -242,7 +242,12 @@ document.addEventListener("DOMContentLoaded", () => {
     exploreButton.className = "loader-explore-cta";
     exploreButton.href = "#planes";
     exploreButton.innerHTML = 'Explorar página <i class="fa-solid fa-arrow-down"></i>';
-    exploreButton.addEventListener("click", () => loader.classList.add("hide"));
+    exploreButton.addEventListener("click", event => {
+      event.preventDefault();
+      loader.classList.add("hide");
+      document.documentElement.classList.remove("welcome-pending");
+      window.scrollTo({ top: 0, behavior: "auto" });
+    });
     heroPreview.appendChild(exploreButton);
     loaderBox.replaceWith(heroPreview);
     // Sólo mostramos el loader cuando la bienvenida final ya reemplazó
