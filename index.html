@@ -46,6 +46,7 @@
   <link rel="stylesheet" href="css/theme.css" />
 </head>
 <body>
+  <div class="site-refresh-progress" id="siteRefreshProgress" aria-hidden="true"></div>
 
   <!-- LOADER PROMOCIONAL -->
   <div class="loader" id="loader">
@@ -80,15 +81,19 @@
       </a>
 
       <!-- TEXTO SOLO PARA CELULAR -->
-      <div class="mobile-brand-name">
-        MORALES <strong>STREAMING</strong>
-      </div>
+      <a href="?sync=1" class="brand-refresh-link" title="Actualizar catálogo">
+        <div class="mobile-brand-name">
+          MORALES <strong>STREAMING</strong>
+        </div>
+      </a>
 
 <!-- TEXTO DE PC -->
-<div class="brand-mini" aria-label="Morales Streaming">
-  <span class="brand-morales">MORALES</span>
-  <span class="brand-streaming">STREAMING</span>
-</div>
+<a href="?sync=1" class="brand-refresh-link" aria-label="Actualizar catálogo de Morales Streaming" title="Actualizar catálogo">
+  <div class="brand-mini">
+    <span class="brand-morales">MORALES</span>
+    <span class="brand-streaming">STREAMING</span>
+  </div>
+</a>
 
     </div>
 
