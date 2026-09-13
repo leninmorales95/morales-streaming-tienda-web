@@ -26,7 +26,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const isLight = root.classList.toggle('light-mode');
     try { localStorage.setItem('morales-theme', isLight ? 'light' : 'dark'); } catch (error) {}
     updateThemeControl();
+    // En celular el selector vive dentro del menú "Más": al elegir un tema,
+    // se cierra para dejar visible el catálogo actualizado.
+    if (window.innerWidth <= 650 && themeToggle.matches('[data-theme-toggle]')) {
+      const menu = document.getElementById('moreMenu');
+      const mobileMoreBtn = document.getElementById('mobileMoreBtn');
+      menu?.classList.remove('active');
+      menu?.setAttribute('aria-hidden', 'true');
+      mobileMoreBtn?.setAttribute('aria-expanded', 'false');
+    }
   }));
+});
+
+// Actualización breve de catálogo desde el logo o el nombre de la marca.
+document.addEventListener('DOMContentLoaded', () => {
+  const progress = document.getElementById('siteRefreshProgress');
+  document.querySelectorAll('.logo-link, .brand-refresh-link').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      if (progress) progress.classList.add('is-loading');
+      window.setTimeout(() => { window.location.href = link.href; }, 260);
+    });
+  });
 });
 
 // ======================================================
