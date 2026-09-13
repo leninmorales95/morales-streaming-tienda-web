@@ -245,6 +245,9 @@ document.addEventListener("DOMContentLoaded", () => {
     exploreButton.addEventListener("click", () => loader.classList.add("hide"));
     heroPreview.appendChild(exploreButton);
     loaderBox.replaceWith(heroPreview);
+    // Sólo mostramos el loader cuando la bienvenida final ya reemplazó
+    // la plantilla promocional inicial; así evitamos el destello fugaz.
+    loader.classList.add("is-ready");
   }
 
   // La bienvenida permanece visible hasta que el usuario pulsa “Explorar página”.
