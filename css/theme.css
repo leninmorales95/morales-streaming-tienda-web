@@ -288,13 +288,6 @@ html:not(.light-mode) .detail-footer-v3,
 html:not(.light-mode) .combo-v3-fixed-footer { background: rgba(19,24,30,.96) !important; border-color: rgba(201,215,223,.13) !important; }
 html:not(.light-mode) #cart-modal { background: #171c22 !important; }
 html:not(.light-mode) .footer-v3-links { background: #0d1116 !important; border-color: rgba(201,215,223,.12) !important; }
-/* En la página principal el banner queda visual; el mensaje completo vive en la bienvenida. */
-header > .hero-modern { min-height: 250px !important; padding: 12px 16px !important; background: transparent !important; box-shadow: none !important; }
-header > .hero-modern > .promo-loader-tag,
-header > .hero-modern > h1,
-header > .hero-modern > .hero-sub { display: none !important; }
-header > .hero-modern .hero-streaming-bg { opacity: .62 !important; }
-
 /* Catálogo: una sola imagen oscurecida como fondo continuo bajo el navbar. */
 header { display: none !important; }
 body {
@@ -343,6 +336,16 @@ footer { position: relative; z-index: 2; }
 html.light-mode .auto-promo-banner { background: rgba(255,250,244,.30) !important; }
 .dashboard-filter-section + .auto-promo-banner { margin-top: 0 !important; margin-bottom: 22px; }
 .dashboard-filter-section { margin-top: 230px !important; }
+/* En escritorio, las portadas respetan el mismo ancho y eje del navbar. */
+@media (min-width:901px) {
+  .catalog-bg-layer {
+    width: min(1250px, calc(100% - 64px));
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    border-radius: 0 0 18px 18px;
+  }
+}
 @media (max-width:650px) {
   .catalog-bg-layer { top: 60px !important; height: 335px; background-size: 100% 335px, 25% 335px, 25% 335px, 25% 335px, 25% 335px; }
   .catalog-bg-layer::after { height: 335px; }
@@ -492,6 +495,11 @@ html:not(.light-mode) .combo-v3-panel .combo-summary-total { color: #7fe8ff !imp
 html.light-mode .combo-v3-panel .combo-v3-hint { color: #60778b !important; }
 html.light-mode .combo-v3-panel .combo-v3-buy { background: linear-gradient(105deg,#2ba9c2,#69d4e3) !important; color: #073443 !important; box-shadow: 0 7px 16px rgba(28,145,170,.16) !important; }
 html.light-mode .combo-v3-panel .combo-v3-buy:disabled { background: #b9dce5 !important; color: #668997 !important; opacity: .78 !important; box-shadow: none !important; }
+html.light-mode .checkout-confirm-v3 {
+  background: #edf5f7 !important;
+  border-color: #8ab8c5 !important;
+  color: #294f62 !important;
+}
 
 html.light-mode .combo-premium-card { transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease !important; }
 html.light-mode .combo-premium-card:hover { transform: translateY(-7px) scale(1.035) !important; z-index: 3; border-color: #42c5df !important; box-shadow: 0 18px 38px rgba(22,63,91,.20) !important; }
@@ -784,6 +792,32 @@ html:not(.light-mode) .more-menu a:focus-visible {
 html:not(.light-mode) .more-menu i { color: #58d9ef !important; }
 html:not(.light-mode) .more-menu small { color: #9eabb4 !important; }
 
+/* Botón “volver arriba”: misma familia visual que el resto de cada tema. */
+html:not(.light-mode) .scroll-top-float {
+  background: #1a2228 !important;
+  border-color: #45616c !important;
+  color: #58d9ef !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.42) !important;
+}
+html:not(.light-mode) .scroll-top-float:hover {
+  background: #26343b !important;
+  color: #8cecf8 !important;
+  border-color: #58d9ef !important;
+  box-shadow: 0 10px 22px rgba(0,0,0,.48) !important;
+}
+html.light-mode .scroll-top-float {
+  background: #f7fbfd !important;
+  border-color: #7fb8c7 !important;
+  color: #087f9f !important;
+  box-shadow: 0 8px 20px rgba(31,62,78,.18) !important;
+}
+html.light-mode .scroll-top-float:hover {
+  background: #e2f1f5 !important;
+  color: #075f78 !important;
+  border-color: #087f9f !important;
+  box-shadow: 0 10px 22px rgba(31,62,78,.22) !important;
+}
+
 /* Durante una búsqueda, el carrusel no debe competir con los resultados. */
 body.search-active .catalog-bg-layer { display: none !important; }
 .combo-premium-card.search-hidden,
@@ -838,30 +872,3 @@ html:not(.light-mode) .combo-premium-card h3 { color: #f4f8fb !important; }
 html.light-mode #cardsContainer .product-card-v3 .plan-title,
 html.light-mode #cardsContainer .card .plan-title,
 html.light-mode .combo-premium-card h3 { color: #172d43 !important; }
-
-
-/* Botón “volver arriba”: misma familia visual que el resto de cada tema. */
-html:not(.light-mode) .scroll-top-float {
-  background: #1a2228 !important;
-  border-color: #45616c !important;
-  color: #58d9ef !important;
-  box-shadow: 0 8px 20px rgba(0,0,0,.42) !important;
-}
-html:not(.light-mode) .scroll-top-float:hover {
-  background: #26343b !important;
-  color: #8cecf8 !important;
-  border-color: #58d9ef !important;
-  box-shadow: 0 10px 22px rgba(0,0,0,.48) !important;
-}
-html.light-mode .scroll-top-float {
-  background: #f7fbfd !important;
-  border-color: #7fb8c7 !important;
-  color: #087f9f !important;
-  box-shadow: 0 8px 20px rgba(31,62,78,.18) !important;
-}
-html.light-mode .scroll-top-float:hover {
-  background: #e2f1f5 !important;
-  color: #075f78 !important;
-  border-color: #087f9f !important;
-  box-shadow: 0 10px 22px rgba(31,62,78,.22) !important;
-}
