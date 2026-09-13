@@ -672,8 +672,8 @@ html.light-mode .review-modern-card .review-footer span { color: #526b7d !import
 @media (min-width: 651px) {
   .top-bar-container .search-box,
   .top-bar-container .search-box:focus-within {
-    width: 285px !important;
-    min-width: 285px !important;
+    width: 230px !important;
+    min-width: 230px !important;
     padding: 8px 14px !important;
     justify-content: flex-start !important;
   }
