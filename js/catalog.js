@@ -160,7 +160,18 @@ function aplicarFiltros() {
     family: ["familia","familiar","ninos","niños","infantil","marvel","disney"],
     budget: ["barato","barata","economico","economica","económico","económica","ahorro","oferta"]
   };
-  const semanticCategory = Object.entries(semanticGroups).find(([, words]) => words.some(word => searchVal.includes(normalizeSearch(word)) || fuzzySearchMatch(searchVal, normalizeSearch(word))))?.[0] || null;
+  // Si se reconoce una plataforma (incluso con un error pequeño), se prioriza
+  // ese resultado. Las búsquedas semánticas se reservan para intenciones como
+  // "películas", "deportes" o "familia", no para ampliar "Disney" a todo el catálogo.
+  const platformSearchKey = searchVal.length >= 3
+    ? Object.entries(platformDetails).find(([key, item]) => {
+        const labels = [normalizeSearch(key), normalizeSearch(item.name)];
+        return labels.some(label => label.includes(searchVal) || fuzzySearchMatch(searchVal, label));
+      })?.[0] || null
+    : null;
+  const semanticCategory = platformSearchKey
+    ? null
+    : Object.entries(semanticGroups).find(([, words]) => words.some(word => searchVal.includes(normalizeSearch(word)) || fuzzySearchMatch(searchVal, normalizeSearch(word))))?.[0] || null;
   const availableOnly = document.getElementById("availableOnly")?.checked || false;
   const offersOnly = document.getElementById("offersOnly")?.checked || false;
 
@@ -182,7 +193,9 @@ function aplicarFiltros() {
       : semanticCategory === "budget"
         ? getCardPrice(card) <= 10
         : semanticCategory && categories.has(semanticCategory);
-    const pasaBusqueda = !isSearching || searchable.includes(searchVal) || fuzzySearchMatch(searchVal, searchable) || semanticProductMatch;
+    const pasaBusqueda = !isSearching || (platformSearchKey
+      ? platformKey === platformSearchKey
+      : searchable.includes(searchVal) || fuzzySearchMatch(searchVal, searchable) || semanticProductMatch);
     const pasaCategoria = ["all","top"].includes(currentCategory) || categories.has(currentCategory);
     const pasaDisponible = !availableOnly || !card.classList.contains("sold-out");
     const pasaOferta = !offersOnly || Boolean(card.querySelector(".old-price-card"));
