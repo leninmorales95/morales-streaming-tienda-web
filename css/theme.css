@@ -838,3 +838,30 @@ html:not(.light-mode) .combo-premium-card h3 { color: #f4f8fb !important; }
 html.light-mode #cardsContainer .product-card-v3 .plan-title,
 html.light-mode #cardsContainer .card .plan-title,
 html.light-mode .combo-premium-card h3 { color: #172d43 !important; }
+
+
+/* Botón “volver arriba”: misma familia visual que el resto de cada tema. */
+html:not(.light-mode) .scroll-top-float {
+  background: #1a2228 !important;
+  border-color: #45616c !important;
+  color: #58d9ef !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.42) !important;
+}
+html:not(.light-mode) .scroll-top-float:hover {
+  background: #26343b !important;
+  color: #8cecf8 !important;
+  border-color: #58d9ef !important;
+  box-shadow: 0 10px 22px rgba(0,0,0,.48) !important;
+}
+html.light-mode .scroll-top-float {
+  background: #f7fbfd !important;
+  border-color: #7fb8c7 !important;
+  color: #087f9f !important;
+  box-shadow: 0 8px 20px rgba(31,62,78,.18) !important;
+}
+html.light-mode .scroll-top-float:hover {
+  background: #e2f1f5 !important;
+  color: #075f78 !important;
+  border-color: #087f9f !important;
+  box-shadow: 0 10px 22px rgba(31,62,78,.22) !important;
+}
