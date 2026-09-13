@@ -132,10 +132,25 @@ function closeQrZoom() {
   qrZoomModal.classList.remove("active");
 }
 
+function openQrZoom(source, alt = "QR de pago ampliado") {
+  if (!qrZoomModal || !qrZoomImage || !source) return;
+  qrZoomImage.src = source;
+  qrZoomImage.alt = alt;
+  qrZoomModal.classList.add("active");
+}
+
 if (qrZoomButton) {
   qrZoomButton.addEventListener("click", () => {
-    qrZoomImage.src = paymentModalQr.src;
-    qrZoomModal.classList.add("active");
+    openQrZoom(paymentModalQr.src, paymentModalQr.alt);
+  });
+}
+if (paymentModalQr) {
+  paymentModalQr.addEventListener("click", () => openQrZoom(paymentModalQr.src, paymentModalQr.alt));
+  paymentModalQr.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openQrZoom(paymentModalQr.src, paymentModalQr.alt);
+    }
   });
 }
 if (qrZoomClose) qrZoomClose.addEventListener("click", closeQrZoom);

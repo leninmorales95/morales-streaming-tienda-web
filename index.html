@@ -714,7 +714,7 @@
       <div class="checkout-payment-details-v3" id="checkoutPaymentDetails">
         <div class="checkout-payment-total-v3"><span>Total a pagar</span><strong id="checkoutPaymentTotal">—</strong></div>
         <div class="checkout-payment-main-v3">
-          <img id="checkoutPaymentQr" src="assets/payments/yape-qr.jpg" alt="QR de Yape">
+          <img id="checkoutPaymentQr" src="assets/payments/yape-qr.jpg" alt="QR de Yape" role="button" tabindex="0" title="Toca para ampliar el QR" aria-label="Ampliar QR de Yape">
           <div class="checkout-payment-account-v3">
             <small id="checkoutPaymentLabel">Número Yape</small>
             <strong id="checkoutPaymentAccount">935 111 590</strong>
@@ -732,7 +732,7 @@
         </div>
       </div>
 
-      <label class="checkout-confirm-v3"><input id="checkoutConfirmAvailability" type="checkbox"> Confirmar disponibilidad antes de pagar.</label>
+      <label class="checkout-confirm-v3"><input id="checkoutConfirmAvailability" type="checkbox"> Confirmo que revisaré la disponibilidad antes de pagar.</label>
 
       <div class="checkout-actions checkout-actions-v3">
         <button type="button" class="checkout-back" id="checkoutBack"><i class="fa-solid fa-arrow-left"></i> Volver al carrito</button>
@@ -758,7 +758,7 @@
         <button type="button" class="payment-choice" data-payment="transferencia" onclick="selectPaymentOption('transferencia', this)">Transferencia</button>
       </div>
       <div class="qr-box" id="paymentQrBox">
-        <img id="paymentModalQr" src="assets/payments/yape-icon.png" alt="QR de Pago" />
+        <img id="paymentModalQr" src="assets/payments/yape-icon.png" alt="QR de Pago" role="button" tabindex="0" title="Toca para ampliar el QR" aria-label="Ampliar QR de pago" />
       </div>
       <button id="paymentQrZoomButton" class="payment-qr-download" type="button"><i class="fa-solid fa-expand"></i> Ampliar QR</button>
       <div class="phone-copy-box" id="paymentPhoneBox">
@@ -828,14 +828,8 @@
           <small id="detailPriceDuration">Plan mensual</small>
         </div>
 
-        <div class="detail-qty-v3" aria-label="Cantidad">
-          <button id="detailQtyMinus" type="button" aria-label="Restar cantidad"><i class="fa-solid fa-minus"></i></button>
-          <strong id="detailQtyValue">1</strong>
-          <button id="detailQtyPlus" type="button" aria-label="Sumar cantidad"><i class="fa-solid fa-plus"></i></button>
-        </div>
-
-        <button type="button" class="detail-cart-btn-v3" id="detailAddCart"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-        <button type="button" class="detail-buy-btn-v3" id="detailBuyNow"><i class="fa-solid fa-bolt"></i> Comprar ahora</button>
+        <button type="button" class="detail-cart-btn-v3" id="detailAddCart"><i class="fa-solid fa-cart-plus"></i> Agregar y ver carrito</button>
+        <button type="button" class="detail-buy-btn-v3" id="detailBuyNow"><i class="fa-solid fa-bolt"></i> Ir a checkout</button>
       </div>
     </article>
   </section>

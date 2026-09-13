@@ -48,6 +48,7 @@ function updateCheckoutV3Payment() {
     main.hidden = false; transfer.hidden = true;
     qr.src = checkoutV3Method === 'plin' ? 'assets/payments/plin-qr.jpg' : 'assets/payments/yape-qr.jpg';
     qr.alt = checkoutV3Method === 'plin' ? 'QR de Plin' : 'QR de Yape';
+    qr.setAttribute('aria-label', `Ampliar ${qr.alt}`);
     label.textContent = checkoutV3Method === 'plin' ? 'Número Plin' : 'Número Yape';
     const phone = getWhatsappNumber().replace(/^51/, '');
     account.textContent = phone.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
@@ -55,6 +56,12 @@ function updateCheckoutV3Payment() {
   link.href = confirmed ? createWhatsappLink(checkoutV3Message()) : '#';
   link.classList.toggle('disabled', !confirmed);
   link.setAttribute('aria-disabled', String(!confirmed));
+}
+
+function openCheckoutQr() {
+  const qr = document.getElementById('checkoutPaymentQr');
+  if (!qr || checkoutV3Method === 'transferencia') return;
+  if (typeof openQrZoom === 'function') openQrZoom(qr.src, qr.alt);
 }
 
 function openCheckoutModal() {
@@ -168,6 +175,16 @@ async function addSelectedComboToCart() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const checkoutQr = document.getElementById('checkoutPaymentQr');
+  if (checkoutQr) {
+    checkoutQr.addEventListener('click', openCheckoutQr);
+    checkoutQr.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openCheckoutQr();
+      }
+    });
+  }
   document.getElementById('checkoutPaymentMethods')?.addEventListener('click', e => {
     const btn = e.target.closest('[data-checkout-payment]'); if (!btn) return;
     checkoutV3Method = btn.dataset.checkoutPayment;

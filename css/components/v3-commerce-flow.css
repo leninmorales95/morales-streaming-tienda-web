@@ -179,8 +179,16 @@
   object-position: center;
   border-radius: 12px;
   background: #ffffff;
-   transform: scale(1.10);
+  transform: scale(1.10);
   transform-origin: center;
+  cursor: zoom-in;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.checkout-payment-main-v3 img:hover,
+.checkout-payment-main-v3 img:focus-visible {
+  transform: scale(1.15);
+  outline: 2px solid #63def0;
+  outline-offset: 3px;
 }
 
 
@@ -233,14 +241,26 @@
 .checkout-confirm-v3 {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin: 14px 0;
-  color: #b4bfd0;
-  font-size: 0.70rem;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid rgba(99,222,240,.22);
+  border-radius: 11px;
+  background: rgba(255,255,255,.035);
+  color: #e0e9f1;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
+  cursor: pointer;
 }
 
 .checkout-confirm-v3 input {
   accent-color: #00d4ff;
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  cursor: pointer;
 }
 
 

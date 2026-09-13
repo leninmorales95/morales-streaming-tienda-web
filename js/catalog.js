@@ -281,11 +281,7 @@ const detailPriceDuration = document.getElementById("detailPriceDuration");
 const detailConditions = document.getElementById("detailConditions");
 const detailDelivery = document.getElementById("detailDelivery");
 const detailSupport = document.getElementById("detailSupport");
-const detailQtyMinus = document.getElementById("detailQtyMinus");
-const detailQtyPlus = document.getElementById("detailQtyPlus");
-const detailQtyValue = document.getElementById("detailQtyValue");
 const detailBuyNow = document.getElementById("detailBuyNow");
-let detailQuantity = 1;
 let currentDetailProduct = null;
 
 function openDetail(platformKey) {
@@ -303,7 +299,6 @@ function openDetail(platformKey) {
   const numericPrice = parseMoney(priceVal);
   const normalizedStock = sheetData ? normalizeStockBadge(sheetData) : { amount: null };
   currentDetailProduct = { id: platformKey, name, price: numericPrice, maxStock: normalizedStock.amount, data: sheetData };
-  detailQuantity = 1;
 
   let featuresArray = sheetData && sheetData.caracteristicas ? String(sheetData.caracteristicas).split(",").map(f => f.trim()).filter(f => f !== "") : (staticData.features || []);
   const originalImgElement = cardElement ? cardElement.querySelector('.brand-logo-card img') : null;
@@ -357,7 +352,7 @@ function openDetail(platformKey) {
   detailPrice.textContent = formatCurrency(numericPrice);
   detailNote.textContent = note || "Garantía y soporte de Morales Streaming durante la vigencia del servicio.";
 
-  updateDetailQuantity();
+  updateDetailAvailability();
 
   detailFeatures.innerHTML = featuresArray.map(item => `<li><i class="fa-solid fa-circle-check" style="color:${brandColor};"></i> ${item}</li>`).join("");
 
@@ -416,44 +411,34 @@ document.getElementById("cardsContainer").addEventListener("keydown", e => {
   openDetail(card.dataset.platform);
 });
 
-function updateDetailQuantity() {
-  if (!detailQtyValue) return;
+function updateDetailAvailability() {
   const max = currentDetailProduct?.maxStock == null ? 99 : Math.max(0, Number(currentDetailProduct.maxStock));
-  if (max === 0) detailQuantity = 1;
-  else detailQuantity = Math.max(1, Math.min(detailQuantity, max));
-  detailQtyValue.textContent = detailQuantity;
-  if (detailQtyMinus) detailQtyMinus.disabled = detailQuantity <= 1 || max === 0;
-  if (detailQtyPlus) detailQtyPlus.disabled = max === 0 || detailQuantity >= max;
   if (detailAddCart) detailAddCart.disabled = max === 0;
   if (detailBuyNow) detailBuyNow.disabled = max === 0;
 }
 
-if (detailQtyMinus) detailQtyMinus.addEventListener("click", () => {
-  detailQuantity = Math.max(1, detailQuantity - 1);
-  updateDetailQuantity();
-});
-
-if (detailQtyPlus) detailQtyPlus.addEventListener("click", () => {
-  const max = currentDetailProduct?.maxStock == null ? 99 : Number(currentDetailProduct.maxStock);
-  detailQuantity = Math.min(max || 1, detailQuantity + 1);
-  updateDetailQuantity();
-});
-
-function addCurrentDetailQuantity(openCartAfter = false) {
-  if (!currentDetailProduct) return;
-  for (let i = 0; i < detailQuantity; i++) {
-    agregarAlCarrito(currentDetailProduct.name, currentDetailProduct.price, false, currentDetailProduct.id, currentDetailProduct.maxStock);
-  }
-  if (openCartAfter) abrirCarrito();
+async function addCurrentDetailProduct() {
+  if (!currentDetailProduct) return false;
+  return agregarAlCarrito(
+    currentDetailProduct.name,
+    currentDetailProduct.price,
+    false,
+    currentDetailProduct.id,
+    currentDetailProduct.maxStock
+  );
 }
 
 if (detailAddCart) {
-  detailAddCart.addEventListener("click", () => addCurrentDetailQuantity(false));
+  detailAddCart.addEventListener("click", async () => {
+    if (!await addCurrentDetailProduct()) return;
+    closeDetail();
+    abrirCarrito();
+  });
 }
 
 if (detailBuyNow) {
-  detailBuyNow.addEventListener("click", () => {
-    addCurrentDetailQuantity(false);
+  detailBuyNow.addEventListener("click", async () => {
+    if (!await addCurrentDetailProduct()) return;
     closeDetail();
     if (typeof openCheckoutModal === "function") openCheckoutModal();
     else abrirCarrito();
