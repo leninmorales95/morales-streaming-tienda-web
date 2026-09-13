@@ -56,6 +56,10 @@ html.skip-welcome .loader {
   display: none !important;
 }
 
+html.welcome-pending body > *:not(.loader):not(.site-refresh-progress) {
+  visibility: hidden;
+}
+
 .promo-loader-box {
   text-align: center;
   background: linear-gradient(145deg, rgba(22, 27, 51, 0.95), rgba(10, 13, 32, 0.98));
