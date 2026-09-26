@@ -3,7 +3,8 @@
    En escritorio permanece oculta.
    ========================================================== */
 .mobile-bottom-nav,
-.mobile-search-btn {
+.mobile-search-btn,
+.mobile-theme-btn {
   display: none;
 }
 
@@ -71,7 +72,24 @@
     transition: opacity .2s ease, transform .2s ease, background .2s ease !important;
   }
 
-  .mobile-search-btn:active {
+  .mobile-theme-btn {
+    display: grid !important;
+    place-items: center !important;
+    flex: 0 0 44px !important;
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    border-radius: 14px !important;
+    background: rgba(255,255,255,.06) !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    transition: opacity .2s ease, transform .2s ease, background .2s ease !important;
+  }
+
+  .mobile-search-btn:active,
+  .mobile-theme-btn:active {
     transform: scale(.94);
   }
 
@@ -108,7 +126,9 @@
 
   /* Estado abierto: ocupa todo el ancho superior */
   .top-bar.search-open .brand-left-box,
-  .top-bar.search-open .mobile-search-btn {
+  .top-bar.search-open .mobile-search-btn,
+  .top-bar.search-open .mobile-theme-btn,
+  .top-bar.search-open .mobile-more-btn {
     opacity: 0 !important;
     pointer-events: none !important;
   }

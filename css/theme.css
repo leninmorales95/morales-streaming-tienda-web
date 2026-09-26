@@ -49,6 +49,7 @@ html.light-mode .mobile-brand-name { color: #172033; }
 html.light-mode .search-box,
 html.light-mode .top-link,
 html.light-mode .mobile-search-btn,
+html.light-mode .mobile-theme-btn,
 html.light-mode .mobile-more-btn { color: #26334a !important; background: rgba(28,48,78,.045) !important; border-color: rgba(28,48,78,.14) !important; }
 html.light-mode .search-box input { color: #172033; }
 html.light-mode .search-box input::placeholder { color: #7b8798; }
@@ -427,6 +428,7 @@ html.light-mode .mobile-brand-name { color: #ffffff !important; }
 html.light-mode .top-link,
 html.light-mode .search-box,
 html.light-mode .mobile-search-btn,
+html.light-mode .mobile-theme-btn,
 html.light-mode .mobile-more-btn { color: #edfaff !important; background: rgba(4,28,47,.22) !important; border-color: rgba(205,241,251,.36) !important; box-shadow: none !important; }
 html.light-mode .top-link:hover,
 html.light-mode .search-box:focus-within { background: rgba(222,249,255,.16) !important; }
@@ -784,7 +786,7 @@ html:not(.light-mode) #cardsContainer .product-card-v3 .product-visual-v3 {
 /* En celulares apaisados el ancho supera 650px, pero debe conservarse la navegación móvil. */
 @media (orientation: landscape) and (max-height: 600px) and (max-width: 1000px) {
   .mobile-bottom-nav { display: grid !important; }
-  .mobile-search-btn, .mobile-more-btn { display: grid !important; }
+  .mobile-search-btn, .mobile-theme-btn, .mobile-more-btn { display: grid !important; }
   .top-actions, .desktop-info-link, .top-links { display: none !important; }
   .top-bar { justify-content: flex-start !important; }
   .brand-left-box { margin-right: auto !important; }
